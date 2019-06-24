@@ -45,8 +45,8 @@ Your module should export a custom integration, for example:
 `src/index.js`
 
 ```js
+const { buildCustomIntegration } = require('@swydo/custom-integrations');
 const config = require('./adapter');
-const { buildCustomIntegration } = require('@swydo/custom-integrations ');
 
 const customIntegration = buildCustomIntegration(config);
 
@@ -499,6 +499,8 @@ async function connector({
     // [Object]- contains all filters that need to be handled by the connector. When multiple filters are used, make sure to use the AND operator between filters.
     filters: [
         {
+            // String - filter key that the expression applies to
+            key: 'foo',
             // [String] - filter values. Should be handled according to the operator
             expressions: ['foo'],
             // String - the operator to use for the given expression
