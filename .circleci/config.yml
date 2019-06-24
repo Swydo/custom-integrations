@@ -86,7 +86,7 @@ workflows:
             - build
       - release:
           requires:
-            - build
+            - test
           filters:
             branches:
               only:
