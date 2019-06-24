@@ -1,0 +1,253 @@
+scalar JSON
+
+type RateLimit {
+    resetInterval: Int!
+    requests: Int!
+    per: [String!]
+}
+
+type ScopeOptionsRequest {
+    endpointId: String
+    valueField: String
+    nameField: String
+}
+
+type ScopePart {
+    key: String
+    optionsRequest: ScopeOptionsRequest
+}
+
+type Scope {
+    parts: [ScopePart]
+}
+
+type DateRange {
+    enabled: Boolean
+    required: Boolean
+    maxLength: Int
+    min: String
+    max: String
+    strategy: String
+}
+
+type Credentials {
+    required: Boolean
+}
+
+type Metrics {
+    min: Int
+    max: Int
+}
+
+type Dimensions {
+    min: Int
+    max: Int
+}
+
+type Cache {
+    enabled: Boolean
+    expireAfterSeconds: Int
+    expireGoldenAfterSeconds: Int
+}
+
+type Comparison {
+    enabled: Boolean
+}
+
+type Totals {
+    aggregate: Boolean
+    useGrandTotals: Boolean
+}
+
+type Display {
+    type: String!
+    format: String
+    input: String
+    path: String
+}
+
+type ListDisplay {
+    type: String!
+    separator: String
+}
+
+type RequestMap {
+    id: String
+    name: String
+}
+
+type RequestFilters {
+    id: String
+}
+
+type Sort {
+    path: String
+}
+
+type FilterOperatorsCapabilities {
+    caseSensitive: Boolean
+    caseInsensitive: Boolean
+    negate: Boolean
+}
+
+type FilterOperator {
+    type: String
+    capabilities: FilterOperatorsCapabilities
+}
+
+type FilterOptionsRequest {
+    endpointId: String
+    idField: String
+    nameField: String
+}
+
+type FilterOption {
+    _id: String
+    name: String
+}
+
+type Filter {
+    min: Int
+    max: Int
+    operators: [FilterOperator]
+    optionsRequest: FilterOptionsRequest
+    options: [FilterOption]
+    requestKey: String
+}
+
+type SubField {
+    key: ID!
+    name: String!
+    type: String!
+    categoryId: String
+    isSelectable: Boolean
+    isDeprecated: Boolean
+    isConstant: Boolean
+    isDimension: Boolean
+    isMetric: Boolean
+    isRetrievable: Boolean
+    isSortable: Boolean
+    isDateTime: Boolean
+    isNegative: Boolean
+    dateRangeFiller: String
+    display: Display
+    listDisplay: ListDisplay
+    default: JSON
+    aggregate: String
+    requestName: String
+    responseName: String
+    formula: String
+    sort: Sort
+    filter: Filter
+}
+
+type Field {
+    key: ID!
+    name: String!
+    type: String!
+    categoryId: String
+    isSelectable: Boolean
+    isDeprecated: Boolean
+    isConstant: Boolean
+    isDimension: Boolean
+    isMetric: Boolean
+    isRetrievable: Boolean
+    isSortable: Boolean
+    isDateTime: Boolean
+    isNegative: Boolean
+    dateRangeFiller: String
+    display: Display
+    listDisplay: ListDisplay
+    default: JSON
+    aggregate: String
+    requestName: String
+    responseName: String
+    formula: String
+    sort: Sort
+    filter: Filter
+    subFields: [SubField]
+}
+
+type ScopeOption {
+    enabled: Boolean
+    required: Boolean
+    requiredPartKeys: [String]
+}
+
+type Pagination {
+    enabled: Boolean
+    perPage: Int
+}
+
+input DateRangeInput {
+    start: String
+    end: String
+}
+
+input FilterInput {
+    key: String
+    expressions: [String]
+    operator: String
+    caseSensitive: Boolean
+    negate: Boolean
+}
+
+input DataInput {
+    page: Int
+    perPage: Int
+    nextPage: JSON
+    offset: Int
+    endpointId: String
+    metrics: [String]
+    dimensions: [String]
+    filters: [FilterInput]
+    dateRange: DateRangeInput
+    limits: [Int]
+    credentials: JSON
+    scope: JSON
+    sort: JSON
+    adapterId: String
+    originalMetrics: [String]
+}
+
+type DataResponse {
+    rows: [JSON]
+    totals: JSON
+    isGolden: Boolean
+    totalPages: Int
+    resultCount: Int
+    nextPage: String
+}
+
+type Endpoint {
+    key: ID!
+    isSelectable: Boolean
+    dateRange: DateRange
+    credentials: Credentials
+    metrics: Metrics
+    dimensions: Dimensions
+    cache: Cache
+    comparison: Comparison
+    totals: Totals
+    categoryId: String
+    scope: ScopeOption
+    pagination: Pagination
+    fields: [Field]
+    data(request: DataInput!): DataResponse
+}
+
+type Adapter {
+    key: ID!
+    name: String!
+    icon: String!
+    authentication: JSON
+    scope: Scope
+    rateLimit: RateLimit
+    endpoints: [Endpoint]
+    endpoint(id: ID!): Endpoint
+}
+
+type Query {
+    adapter: Adapter
+    version: String!
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@swydo/custom-integrations",
+  "version": "0.0.1",
+  "description": "Custom integrations enable any online platform to be integrated with Swydo to use in your reports",
+  "engines": {
+    "node": "10"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "can-npm-publish": "can-npm-publish --verbose",
+    "coverage-report": "nyc report",
+    "coverage-check": "nyc check-coverage",
+    "eslint": "eslint ./src",
+    "mocha": "npx nyc --silent mocha \"src/**/*.spec.js\" --exit",
+    "release": "standard-version",
+    "test": "npm run eslint && npm run mocha && npm run coverage-report && npm run coverage-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swydo/custom-integrations.git"
+  },
+  "keywords": [
+    "swydo"
+  ],
+  "author": "Swydo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Swydo/custom-integrations/issues"
+  },
+  "homepage": "https://github.com/Swydo/custom-integrations#readme",
+  "dependencies": {
+    "ajv": "6.10.0",
+    "apollo-server-core": "2.0.6",
+    "graphql": "0.13.2",
+    "graphql-import": "0.7.1",
+    "graphql-tools": "4.0.3",
+    "graphql-type-json": "0.2.1",
+    "lodash": "4.17.11"
+  },
+  "devDependencies": {
+    "can-npm-publish": "1.3.1",
+    "chai": "4.2.0",
+    "eslint": "5.9.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-mocha-no-only": "1.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "mocha": "5.2.0",
+    "nock": "10.0.2",
+    "nyc": "14.1.1",
+    "standard-version": "6.0.1"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "extends": "airbnb",
+  "plugins": ["mocha-no-only"],
+  "rules": {
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "max-len": ["error", 120],
+    "import/prefer-default-export": "off",
+    "object-curly-newline": "off",
+    "function-paren-newline": "off",
+    "no-return-assign": "off",
+    "no-underscore-dangle": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-use-before-define": ["error", { "functions": false }],
+    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
+    "no-restricted-globals": "off",
+    "no-console": "error",
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "object-property-newline": "error",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "cjs-export", "next": "*" },
+      { "blankLine": "never", "prev": "cjs-export", "next": "cjs-export" },
+      { "blankLine": "any", "prev": "cjs-export", "next": "expression" },
+      { "blankLine": "always", "prev": "cjs-import", "next": "*" },
+      { "blankLine": "any", "prev": "cjs-import", "next": "expression" },
+      { "blankLine": "never", "prev": "cjs-import", "next": "cjs-import" },
+      { "blankLine": "always", "prev": "*", "next": "continue" },
+      { "blankLine": "always", "prev": "directive", "next": "*" },
+      { "blankLine": "always", "prev": "export", "next": "*" },
+      { "blankLine": "any", "prev": "export", "next": "export" },
+      { "blankLine": "always", "prev": "iife", "next": "*" },
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" },
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "throw" }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.js"],
+      "rules": {
+        "prefer-arrow-callback": "off",
+        "func-names": "off",
+        "no-unused-expressions": "off",
+        "mocha-no-only/mocha-no-only": ["error"]
+      }
+    }
+  ]
+}
