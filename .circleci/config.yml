@@ -84,7 +84,7 @@ workflows:
       - test:
           requires:
             - build
-      - deploy:
+      - release:
           requires:
             - build
           filters:
