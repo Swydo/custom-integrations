@@ -238,8 +238,6 @@ type Endpoint {
 
 type Adapter {
     key: ID!
-    name: String!
-    icon: String!
     authentication: JSON
     scope: Scope
     rateLimit: RateLimit
