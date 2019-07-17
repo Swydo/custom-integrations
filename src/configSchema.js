@@ -717,6 +717,26 @@ field.properties.subFields = {
     itmes: baseField,
 };
 
+const endpointScope = {
+    type: 'object',
+    additionalProperties: false,
+    required: ['enabled', 'required'],
+    properties: {
+        enabled: {
+            type: 'boolean',
+        },
+        required: {
+            type: 'boolean',
+        },
+        requiredPartKeys: {
+            type: 'array',
+            items: {
+                type: 'string',
+            },
+        },
+    },
+};
+
 const endpoint = {
     type: 'object',
     additionalProperties: false,
@@ -739,6 +759,7 @@ const endpoint = {
         comparison,
         pagination,
         totals,
+        scope: endpointScope,
         fields: {
             type: 'array',
             itmes: field,
