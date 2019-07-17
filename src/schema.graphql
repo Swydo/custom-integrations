@@ -197,7 +197,6 @@ input DataInput {
     perPage: Int
     nextPage: JSON
     offset: Int
-    endpointId: String
     metrics: [String]
     dimensions: [String]
     filters: [FilterInput]
@@ -206,7 +205,6 @@ input DataInput {
     credentials: JSON
     scope: JSON
     sort: JSON
-    adapterId: String
     originalMetrics: [String]
 }
 

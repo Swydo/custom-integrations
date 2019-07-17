@@ -63,11 +63,10 @@ describe('resolvers', function () {
     describe('Endpoint resolvers', function () {
         describe('#data', function () {
             it('returns the data for an endpoint', function () {
+                const value = 'foo';
                 const endpoint = {
-                    endpointId: 'foo:bar',
-                    connector: ({ endpointId, adapterId }) => ({
-                        adapterId,
-                        endpointId,
+                    connector: () => ({
+                        value,
                     }),
                 };
 
@@ -75,7 +74,7 @@ describe('resolvers', function () {
                 const result = resolver(endpoint, {});
 
                 expect(result).to.exist;
-                expect(result).to.deep.equal({ endpointId: 'foo:bar', adapterId: 'foo' });
+                expect(result).to.deep.equal({ value });
             });
         });
     });

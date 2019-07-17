@@ -475,10 +475,6 @@ A connector is a function/promise that's responsible for formatting the input op
 
 ```js
 async function connector({
-    // String - identifier of the adapter the request is made from
-    adapterId: 'foo',
-    // String - identifier of the endpoint the request is made from
-    endpointId: 'foo:bar',
     // [String] - the requested metrics
     metrics: ['bar'],
     // [String] - the original field keys before they are manipulated for the request by e.g. 'requestName`
