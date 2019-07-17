@@ -13,14 +13,26 @@ function getAsyncHandler(config) {
         // Keep connections alive for resue but return result immediately.
         context.callbackWaitsForEmptyEventLoop = false; // eslint-disable-line no-param-reassign
 
-        const result = await runQuery({
-            schema,
-            variables,
-            rootValue: config,
-            queryString: query,
-        });
+        try {
+            const result = await runQuery({
+                schema,
+                variables,
+                rootValue: config,
+                queryString: query,
+            });
 
-        return result;
+            if (result.errors) {
+                // eslint-disable-next-line no-console
+                console.log(result.errors);
+            }
+
+            return result;
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.log(error);
+
+            throw error;
+        }
     };
 }
 
