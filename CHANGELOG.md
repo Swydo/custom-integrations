@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/Swydo/custom-integrations/compare/0.2.3...0.2.4) (2019-07-17)
+
+
+### Bug Fixes
+
+* **config schema:** add missing endpoint scope config ([#1](https://github.com/Swydo/custom-integrations/issues/1)) ([360cc48](https://github.com/Swydo/custom-integrations/commit/360cc48))
+
+
+
 ### [0.2.3](https://github.com/Swydo/custom-integrations/compare/0.2.2...0.2.3) (2019-06-26)
 
 
