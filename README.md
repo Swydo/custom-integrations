@@ -277,6 +277,8 @@ const endpoints = [
         },
         // [Object] - field definitions
         fields,
+        // Function|Promise - responsible for formatting the input options to an external request and the response of the external request to the custom integration format
+        connector,
     },
 ];
 ```
@@ -293,7 +295,7 @@ const fields = [
         // String - field name as it a appears in the gui
         name: 'Foo',
         // String - type of the field's value
-        type: 'String' | 'Boolean' | 'Number' | 'Date' | 'Object',
+        type: 'String' | 'Boolean' | 'Number' | 'Object',
         // String (optional) - human readable name this field should be shown as in the gui
         categoryId: 'foo',
         // Boolean (optional) - indicates whether the field is selectable in the gui
@@ -314,11 +316,10 @@ const fields = [
         isDateTime: false, // default false
         // Boolean (optional) - indicates whether it's positive or negative if the number is higher or lower when compared to a previous period
         isNegative: false, // default false
-        // String (optional) - indicates how missing dates are added, only usable when field type is 'Date'
+        // String (optional) - indicates how missing dates are added
         // default based on the field's key
         dateRangeFiller:
             'null' |
-            'date' |
             'second' |
             'minute' |
             'hour' |
@@ -373,7 +374,6 @@ const fields = [
                 'multiLineUrl' | // format the field value to a clickable link over multiple lines
                 'timeBucket' | // format the field to a time bucket
                 'icon' | // input: 'down' | 'delete' | 'enabled' | 'error' | 'removed' | 'nocredits' | 'notdelivered' | 'paused' | 'sent' | 'up' | 'unconfirmed' | 'unknown', format: icon
-                'badOkGood' | // input: Number between 1-3 , format: fill up to 3 dots with red, orange, green used to indicate a status
                 'base64Image' | // input: base64 string
                 'image', // input: url to an image
             format: 'LLLL', // overwrite output format
@@ -402,7 +402,7 @@ const fields = [
             'percentage' |
             'min' |
             'max' |
-            'range' | // default for field type: 'Date'
+            'range' | // for date fields
             'median' |
             'mode' |
             'compute' |
@@ -463,8 +463,6 @@ const fields = [
         },
         // [Object] - subfields are field definitions that describe nested fields when field type is object
         subFields,
-        // Function|Promise - responsible for formatting the input options to an external request and the response of the external request to the custom integration format
-        connector,
     },
 ];
 ```
