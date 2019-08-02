@@ -95,7 +95,7 @@ An `adapter` is a container for a set of different endpoints that defines authen
 ```js
 const adapter = {
     // String - identifier, must be kebab case e.g. foo-bar
-    key: 'foo',
+    id: 'foo',
     // String (optional) - human readable name
     name: 'Foo',
     // String (optional) - a url to an icon
@@ -199,7 +199,7 @@ An API endpoint configuration is stored in an adapter's endpoint.
 const endpoints = [
     {
         // String - identifier
-        key: 'foo',
+        id: 'foo',
         // Boolean (optional) - indicates whether the endpoint is selectable in the gui
         isSelectable: true, // default false
         // String (optional) - human readable name this endpoint should be shown as in the gui
@@ -291,7 +291,7 @@ Fields contains the definitions of external or internal metrics or dimensions.
 const fields = [
     {
         // String - identifier
-        key: 'foo',
+        id: 'foo',
         // String - field name as it a appears in the gui
         name: 'Foo',
         // String - type of the field's value
@@ -453,7 +453,7 @@ const fields = [
                     options: [
                         {
                             // String - identifier of the filter option. This is the value that's sent along in the request
-                            _id: 'foo',
+                            id: 'foo',
                             // name of the filter option that is shown in the ui
                             name: 'foo',
                         },

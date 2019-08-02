@@ -8,7 +8,7 @@ const resolvers = {
         version: () => packageJSON.version,
     },
     Adapter: {
-        endpoint: ({ endpoints }, { id }) => endpoints.find(endpoint => endpoint.key === id),
+        endpoint: ({ endpoints }, { id }) => endpoints.find(endpoint => endpoint.id === id),
     },
     Endpoint: {
         data: ({ connector }, { request }) => connector(request),

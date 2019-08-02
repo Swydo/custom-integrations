@@ -17,7 +17,7 @@ describe('resolvers', function () {
             it('returns the adapter', function () {
                 const config = {
                     adapter: {
-                        key: 'foo',
+                        id: 'foo',
                     },
                 };
 
@@ -25,7 +25,7 @@ describe('resolvers', function () {
                 const result = resolver(config);
 
                 expect(result).to.exist;
-                expect(result).to.have.property('key', config.adapter.key);
+                expect(result).to.have.property('id', config.adapter.id);
             });
         });
 
@@ -46,7 +46,7 @@ describe('resolvers', function () {
                 const adapter = {
                     endpoints: [
                         {
-                            key: 'foo',
+                            id: 'foo',
                         },
                     ],
                 };
@@ -55,7 +55,7 @@ describe('resolvers', function () {
                 const result = resolver(adapter, { id: 'foo' });
 
                 expect(result).to.exist;
-                expect(result).to.have.property('key', adapter.endpoints[0].key);
+                expect(result).to.have.property('id', adapter.endpoints[0].id);
             });
         });
     });

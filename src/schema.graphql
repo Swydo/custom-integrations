@@ -102,7 +102,7 @@ type FilterOptionsRequest {
 }
 
 type FilterOption {
-    _id: String
+    id: String
     name: String
 }
 
@@ -116,7 +116,7 @@ type Filter {
 }
 
 type SubField {
-    key: ID!
+    id: ID!
     name: String!
     type: String!
     categoryId: String
@@ -142,7 +142,7 @@ type SubField {
 }
 
 type Field {
-    key: ID!
+    id: ID!
     name: String!
     type: String!
     categoryId: String
@@ -218,7 +218,7 @@ type DataResponse {
 }
 
 type Endpoint {
-    key: ID!
+    id: ID!
     isSelectable: Boolean
     dateRange: DateRange
     credentials: Credentials
@@ -235,7 +235,7 @@ type Endpoint {
 }
 
 type Adapter {
-    key: ID!
+    id: ID!
     authentication: JSON
     scope: Scope
     rateLimit: RateLimit

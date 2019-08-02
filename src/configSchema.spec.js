@@ -6,7 +6,7 @@ describe('configSchema', function () {
     describe('#validateConfig', function () {
         it('validates an adapter config', function () {
             const adapter = {
-                key: 'foo',
+                id: 'foo',
                 authentication: {
                     type: 'form',
                     formOptions: {
@@ -14,14 +14,14 @@ describe('configSchema', function () {
                             {
                                 label: 'Name',
                                 type: 'text',
-                                key: 'name',
+                                id: 'name',
                                 placeholder: 'Enter connection name',
                             },
                         ],
                     },
                 },
                 endpoints: [{
-                    key: 'bar',
+                    id: 'bar',
                     connector: () => 'bar',
                     fields: [],
                 }],

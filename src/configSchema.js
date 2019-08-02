@@ -564,9 +564,9 @@ const optionsRequest = {
 const filterOption = {
     type: 'object',
     additionalProperties: false,
-    required: ['_id', 'name'],
+    required: ['id', 'name'],
     properties: {
-        _id: {
+        id: {
             type: 'string',
         },
         name: {
@@ -603,9 +603,9 @@ const filter = {
 const baseField = {
     type: 'object',
     additionalProperties: false,
-    required: ['key', 'name', 'type'],
+    required: ['id', 'name', 'type'],
     properties: {
-        key: {
+        id: {
             type: 'string',
         },
         name: {
@@ -740,9 +740,9 @@ const endpointScope = {
 const endpoint = {
     type: 'object',
     additionalProperties: false,
-    required: ['key', 'fields', 'connector'],
+    required: ['id', 'fields', 'connector'],
     properties: {
-        key: {
+        id: {
             type: 'string',
         },
         categoryId: {
@@ -792,9 +792,9 @@ const configSchema = {
         adapter: {
             type: 'object',
             additionalProperties: false,
-            required: ['key', 'endpoints'],
+            required: ['id', 'endpoints'],
             properties: {
-                key: {
+                id: {
                     type: 'string',
                 },
                 authentication,
