@@ -35,7 +35,7 @@
     "graphql-import": "0.7.1",
     "graphql-tools": "4.0.3",
     "graphql-type-json": "0.2.1",
-    "lodash": "4.17.11"
+    "lodash": "4.17.15"
   },
   "devDependencies": {
     "can-npm-publish": "1.3.1",
