@@ -608,7 +608,7 @@ const baseField = {
         name: {
             type: 'string',
         },
-        categoryId: {
+        category: {
             type: 'string',
         },
         type: {
@@ -743,7 +743,7 @@ const endpoint = {
         id: {
             type: 'string',
         },
-        categoryId: {
+        category: {
             type: 'string',
         },
         isSelectable: {

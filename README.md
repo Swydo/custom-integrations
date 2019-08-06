@@ -202,8 +202,8 @@ const endpoints = [
         id: 'foo',
         // Boolean (optional) - indicates whether the endpoint is selectable in the gui
         isSelectable: true, // default false
-        // String (optional) - human readable name this endpoint should be shown as in the gui
-        categoryId: 'foo',
+        // String (optional) - category name as it a appears in the gui where fields from this endpoint belong to
+        category: 'foo',
         // Object (optional) - date range options
         dateRange: {
             // Boolean (optional) - indicates if this endpoint supports date ranges
@@ -294,8 +294,8 @@ const fields = [
         name: 'Foo',
         // String - type of the field's value
         type: 'String' | 'Boolean' | 'Number' | 'Object',
-        // String (optional) - human readable name this field should be shown as in the gui
-        categoryId: 'foo',
+        // String (optional) - field category name as it a appears in the gui
+        category: 'foo',
         // Boolean (optional) - indicates whether the field is selectable in the gui
         isSelectable: true, // default true
         // Boolean (optional) - deprecation state of the field
