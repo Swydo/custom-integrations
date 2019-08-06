@@ -244,8 +244,6 @@ const endpoints = [
             enabled: true, // default true
             // Number (optional) - expire cache after amount of seconds
             expireAfterSeconds: 3600, // default 3600
-            // Number (optional) - expire cache after amount of seconds for golden data. Golden data means that the rows and totals are static and won't change anymore in the future
-            expireGoldenAfterSeconds: 604800, // default 604800
         },
         // Object (optional) - comparison options
         comparison: {
@@ -542,8 +540,6 @@ async function connector({
         totals: {
             bar: '40',
         },
-        // Boolean (optional) - determines wether data is golden or not. Golden data means that the rows and totals are static and won't change anymore in the future. This setting is used to determine the Cache duration
-        isGolden: false,
         // Number (optional) - the total number of pages to expect. All other pages will be requested automatically when this value is returned on page one
         totalPages: 1,
         // Number (optional) - the total number of rows to expect. All other pages will be requested automatically when this value is returned on page one and perPage is available

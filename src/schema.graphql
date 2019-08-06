@@ -47,7 +47,6 @@ type Dimensions {
 type Cache {
     enabled: Boolean
     expireAfterSeconds: Int
-    expireGoldenAfterSeconds: Int
 }
 
 type Comparison {
@@ -211,7 +210,6 @@ input DataInput {
 type DataResponse {
     rows: [JSON]
     totals: JSON
-    isGolden: Boolean
     totalPages: Int
     resultCount: Int
     nextPage: String

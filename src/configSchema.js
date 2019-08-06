@@ -409,15 +409,12 @@ const minMax = {
 const cache = {
     type: 'object',
     additionalProperties: false,
-    required: ['enabled', 'expireAfterSeconds', 'expireGoldenAfterSeconds'],
+    required: ['enabled', 'expireAfterSeconds'],
     properties: {
         enabled: {
             type: 'boolean',
         },
         expireAfterSeconds: {
-            type: 'number',
-        },
-        expireGoldenAfterSeconds: {
             type: 'number',
         },
     },
