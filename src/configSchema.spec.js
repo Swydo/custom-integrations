@@ -12,6 +12,7 @@ describe('configSchema', function () {
                     formOptions: {
                         fields: [
                             {
+                                key: 'foo',
                                 label: 'Name',
                                 type: 'text',
                                 id: 'name',
@@ -23,19 +24,27 @@ describe('configSchema', function () {
                 endpoints: [{
                     id: 'bar',
                     connector: () => 'bar',
-                    fields: [],
+                    fields: [{
+                        id: 'bar',
+                        name: 'bar',
+                        type: 'String',
+                    }],
                 }],
             };
 
-            const successfulValidate = () => validateConfig(adapter);
+            function successfulValidate() {
+                return validateConfig({ adapter });
+            }
 
-            expect(successfulValidate).to.not.throw;
+            expect(successfulValidate()).to.not.throw;
         });
 
         it('invalidates an invalid adapter config', function () {
             const adapter = {};
 
-            const failingValidate = () => validateConfig(adapter);
+            function failingValidate() {
+                return validateConfig({ adapter });
+            }
 
             expect(failingValidate).to.throw;
         });
@@ -140,7 +149,7 @@ describe('configSchema', function () {
     });
 
     describe('#scopePartCustomValidator', function () {
-        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.itmes;
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
         const customValidator = fieldSchema.properties.default.custom;
 
         it('validates when parent data type matches type', function () {

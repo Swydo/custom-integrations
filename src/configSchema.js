@@ -580,7 +580,7 @@ const filter = {
     additionalProperties: false,
     properties: {
         key: {
-            type: String,
+            type: 'string',
         },
         min: {
             type: 'number',
@@ -620,11 +620,9 @@ const baseField = {
         },
         isSelectable: {
             type: 'boolean',
-            default: true,
         },
         isDeprecated: {
             type: 'boolean',
-            default: false,
         },
         isConstant: {
             type: 'boolean',
@@ -703,6 +701,9 @@ const baseField = {
         responseName: {
             type: 'string',
         },
+        formula: {
+            type: 'string',
+        },
         sort,
         filter,
         identifierPath: {
@@ -762,21 +763,21 @@ const endpoint = {
         scope: endpointScope,
         fields: {
             type: 'array',
-            itmes: field,
+            items: field,
         },
         connector: {
             custom(validateContext, data) {
                 if (data instanceof Promise || typeof data === 'function') {
-                    // eslint-disable-next-line no-param-reassign
-                    validateContext.errors = [
-                        {
-                            keyword: 'custom',
-                            message: 'should be of type function or Promise',
-                        },
-                    ];
-
                     return true;
                 }
+
+                // eslint-disable-next-line no-param-reassign
+                validateContext.errors = [
+                    {
+                        keyword: 'custom',
+                        message: 'should be of type function or Promise',
+                    },
+                ];
 
                 return false;
             },
