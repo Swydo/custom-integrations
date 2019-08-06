@@ -403,7 +403,6 @@ const fields = [
             'range' | // for date fields
             'median' |
             'mode' |
-            'compute' |
             'last' |
             'oneOrNothing',
         // String (optional) - how the field should be requested.  If used, this name will be sent to the connector instead of the field's "key" value

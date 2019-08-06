@@ -687,7 +687,6 @@ const baseField = {
                 'range',
                 'median',
                 'mode',
-                'compute',
                 'oneOrNothing',
                 'last',
             ],
