@@ -243,7 +243,7 @@ const endpoints = [
             // Boolean (optional) - enable or disable caching of data
             enabled: true, // default true
             // Number (optional) - expire cache after amount of seconds
-            expireAfterSeconds: 3600, // default 3600
+            expireAfterSeconds: 3600, // default 3600, max 3600
         },
         // Object (optional) - comparison options
         comparison: {

@@ -416,6 +416,8 @@ const cache = {
         },
         expireAfterSeconds: {
             type: 'number',
+            minimum: 0,
+            maximum: 3600,
         },
     },
 };
