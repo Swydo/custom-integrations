@@ -529,7 +529,7 @@ const filterOperator = {
 const optionsRequest = {
     type: 'object',
     additionalProperties: false,
-    required: ['endpointId', 'idField', 'nameField'],
+    required: ['idField', 'nameField'],
     properties: {
         endpointId: {
             type: 'string',
