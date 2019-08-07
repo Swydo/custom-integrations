@@ -105,6 +105,10 @@ type Filter {
     requestKey: String
 }
 
+type DateTime {
+    type: String!
+}
+
 type SubField {
     id: ID!
     name: String!
@@ -117,9 +121,8 @@ type SubField {
     isMetric: Boolean
     isRetrievable: Boolean
     isSortable: Boolean
-    isDateTime: Boolean
     isNegative: Boolean
-    dateRangeFiller: String
+    dateTime: DateTime
     display: Display
     listDisplay: ListDisplay
     default: JSON
@@ -143,9 +146,8 @@ type Field {
     isMetric: Boolean
     isRetrievable: Boolean
     isSortable: Boolean
-    isDateTime: Boolean
     isNegative: Boolean
-    dateRangeFiller: String
+    dateTime: DateTime
     display: Display
     listDisplay: ListDisplay
     default: JSON

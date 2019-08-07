@@ -300,56 +300,38 @@ const fields = [
         isRetrievable: true, // default true
         // Boolean (optional) - indicates whether it's possible to sort on the field
         isSortable: true, // default true
-        // Boolean (optional) - indicates whether the field's return value is date/time series
-        isDateTime: false, // default false
         // Boolean (optional) - indicates whether it's positive or negative if the number is higher or lower when compared to a previous period
         isNegative: false, // default false
-        // String (optional) - indicates how missing dates are added
-        // default based on the field's key
-        dateRangeFiller:
-            'null' |
-            'second' |
-            'minute' |
-            'hour' |
-            'day' |
-            'week' |
-            'isoWeek' |
-            'month' |
-            'year' |
-            'isoYear' |
-            'minuteOfHour' |
-            'hourOfDay' |
-            'dayOfWeek' |
-            'dayOfMonth' |
-            'weekOfYear' |
-            'isoWeekOfYear' |
-            'monthOfYear',
-        // Object (optional) - indicates how the field's value should be formatted in the interface.
+        // Object (optional) - configure the field as a date time
+        dateTime: {
+            // String - indicates date type, each type expects the connector ouput to be a string in the indicated format, see MomentJs http://momentjs.com/docs/#/displaying/format/
+            type:
+                'date' | // format: ISO 8601
+                'day' | // format: 'YYYY-MM-DD'
+                'year' | // format: 'YYYY'
+                'quarter' | // format: ''YYYY-Q'
+                'quarterOfYear' | // format: 'Q'
+                'monthOfYear' | // format: 'MM'
+                'month' | // format: 'YYYY-MM'
+                'hourOfDay' | // format: 'HH'
+                'minute' | // format: 'YYYY-MM-DD HH:mm'
+                'second' | // format: 'YYYY-MM-DD HH:mm:ss'
+                'minuteOfHour' | // format: 'mm'
+                'dayOfWeek' | // format: 'e'
+                'hour' | // format: 'YYYY-MM-DD HH'
+                'week' | // format: 'YYYY-MM-DD HH'
+                'isoYear' | // format: 'GGGG'
+                'isoWeek' | // format: 'GGGGWW'
+                'dayOfMonth' | // format: 'DD'
+                'weekOfYear' | // format: 'ww'
+                'isoWeekOfYear' | // format: 'WW'
+        },
+        // Object (optional) - indicates how the field's value should be formatted in the interface
         display: {
             // default based on field key and/or type
             // String - indicates which display formatter to use
-            // dates use MomentJs http://momentjs.com/docs/#/displaying/format/
             // numbers use Numbro.js: https://numbrojs.com/old-format.html
             type:
-                'date' | // input: ISO 8601, format: 'YYYY-MM-DDTHH:MM:ssZ'
-                'day' | // input: 'YYYY-MM-DD', format: 'LL'
-                'year' | // input: 'YYYY', format: 'YYYY'
-                'quarter' | // input: ''YYYY-Q'', format: 'Qo YYYY'
-                'quarterOfYear' | // input: 'Q', format: 'Qo YYYY'
-                'monthOfYear' | // input: 'MM', format: 'MMMM'
-                'month' | // input: 'YYYY-MM', format: 'MMM YYY'
-                'hourOfDay' | // input: 'HH', format: 'LT'
-                'minute' | // input: 'YYYY-MM-DD HH:mm', format: 'LLLL'
-                'second' | // input: 'YYYY-MM-DD HH:mm:ss', format: 'LL LTS'
-                'minuteOfHour' | // input: 'mm', format: 'm'
-                'dayOfWeek' | // input: 'e', format: 'dddd'
-                'hour' | // input: 'YYYY-MM-DD HH', format: 'LLL'
-                'week' | // input: 'YYYY-MM-DD HH', format: 'LLL'
-                'isoYear' | // input: 'GGGG', format: 'GGGG'
-                'isoWeek' | // input: 'GGGGWW', format: 'W GGGG'
-                'dayOfMonth' | // input: 'DD', format: 'D'
-                'weekOfYear' | // input: 'ww', format: 'w'
-                'isoWeekOfYear' | // input: 'WW', format: 'W'
                 'number' | // format: '0,0.[00]'
                 'currency' | // input: ISO 4217
                 'percentage' | // format: '0,0.[00]%'
@@ -364,8 +346,30 @@ const fields = [
                 'icon' | // input: 'down' | 'delete' | 'enabled' | 'error' | 'removed' | 'nocredits' | 'notdelivered' | 'paused' | 'sent' | 'up' | 'unconfirmed' | 'unknown', format: icon
                 'base64Image' | // input: base64 string
                 'image', // input: url to an image
-            format: 'LLLL', // overwrite output format
-            input: 'YYYY-MM-DDTHH:MM:ssZ', // overwrite input format
+            format: '0,0.[00]', // overwrite output format
+            path: 'foo.date', // path to input value when field type is object
+        },
+        // Object (optional) - indicates how the field's value should be short formatted in the interface
+        shortDisplay: {
+            // default based on field key and/or type
+            // String - indicates which display formatter to use
+            // numbers use Numbro.js: https://numbrojs.com/old-format.html
+            type:
+                'number' | // format: '0,0.[00]'
+                'currency' | // input: ISO 4217
+                'percentage' | // format: '0,0.[00]%'
+                'object' | // format an object to a gui friendly format
+                'boolean' | // format a boolean to a checkmark or cross icon based on the value
+                'time' | // input: milliseconds, format:' h m'
+                'link' | // format the field value to a clickable link
+                'text' | // format the field to a text span
+                'subParts' | // split the field by input delimiter and format sub part by format tag
+                'multiLineUrl' | // format the field value to a clickable link over multiple lines
+                'timeBucket' | // format the field to a time bucket
+                'icon' | // input: 'down' | 'delete' | 'enabled' | 'error' | 'removed' | 'nocredits' | 'notdelivered' | 'paused' | 'sent' | 'up' | 'unconfirmed' | 'unknown', format: icon
+                'base64Image' | // input: base64 string
+                'image', // input: url to an image
+            format: '0,0.[00]', // overwrite output format
             path: 'foo.date', // path to input value when field type is object
         },
         // Object (optional) - indicates how the value should be formatted in the gui if it's returned as an array
@@ -381,18 +385,12 @@ const fields = [
         // default based on field type
         aggregate:
             'average' |
-            'weightedAvg' |
-            'array' |
             'distinctArray' |
             'distinct' | // default for field type: 'String' | 'Object' | 'Boolean'
-            'concatenate' |
             'sum' | // default for field type: 'Number'
-            'percentage' |
             'min' |
             'max' |
-            'range' | // for date fields
-            'median' |
-            'mode' |
+            'range' | // for date time fields
             'last' |
             'oneOrNothing',
         // String (optional) - how the field should be requested.  If used, this name will be sent to the connector instead of the field's "key" value

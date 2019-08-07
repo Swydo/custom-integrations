@@ -148,7 +148,7 @@ describe('configSchema', function () {
         });
     });
 
-    describe('#scopePartCustomValidator', function () {
+    describe('#fieldDefaultCustomValidator', function () {
         const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
         const customValidator = fieldSchema.properties.default.custom;
 
@@ -167,6 +167,60 @@ describe('configSchema', function () {
             const _ = {};
             const validateContext = {};
             const parentData = { type: 'String' };
+            const data = 0;
+
+            const isValid = customValidator(validateContext, data, _, _, parentData);
+
+            expect(isValid).to.be.false;
+        });
+    });
+
+    describe('#fieldDisplayCustomValidator', function () {
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
+        const customValidator = fieldSchema.properties.display.custom;
+
+        it('validates when parent data does not have dateTime', function () {
+            const _ = {};
+            const validateContext = {};
+            const parentData = { };
+            const data = 'foo';
+
+            const isValid = customValidator(validateContext, data, _, _, parentData);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('invalidates when parent data has dateTime', function () {
+            const _ = {};
+            const validateContext = {};
+            const parentData = { dateTime: { type: 'day' } };
+            const data = 0;
+
+            const isValid = customValidator(validateContext, data, _, _, parentData);
+
+            expect(isValid).to.be.false;
+        });
+    });
+
+    describe('#fieldShortDisplayCustomValidator', function () {
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
+        const customValidator = fieldSchema.properties.shortDisplay.custom;
+
+        it('validates when parent data does not have dateTime', function () {
+            const _ = {};
+            const validateContext = {};
+            const parentData = { };
+            const data = 'foo';
+
+            const isValid = customValidator(validateContext, data, _, _, parentData);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('invalidates when parent data has dateTime', function () {
+            const _ = {};
+            const validateContext = {};
+            const parentData = { dateTime: { type: 'day' } };
             const data = 0;
 
             const isValid = customValidator(validateContext, data, _, _, parentData);

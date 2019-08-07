@@ -457,6 +457,20 @@ const display = {
             type: 'string',
         },
     },
+    custom(validateContext, data, parentSchema, dataPath, parentData) {
+        const hasDateTime = parentData.dateTime;
+
+        if (hasDateTime) {
+            const errorMessage = 'can not be used when field is a date time';
+
+            // eslint-disable-next-line no-param-reassign
+            validateContext.errors = getCustomError(errorMessage, 'display');
+
+            return false;
+        }
+
+        return true;
+    },
 };
 
 const listDisplay = {
@@ -574,6 +588,17 @@ const filter = {
     },
 };
 
+const dateTime = {
+    type: 'object',
+    additionalProperties: false,
+    required: ['type'],
+    properties: {
+        key: {
+            type: 'string',
+        },
+    },
+};
+
 const baseField = {
     type: 'object',
     additionalProperties: false,
@@ -590,7 +615,7 @@ const baseField = {
         },
         type: {
             type: 'string',
-            enum: ['String', 'Boolean', 'Number', 'Date', 'Object'],
+            enum: ['String', 'Boolean', 'Number', 'Object'],
         },
         isSelectable: {
             type: 'boolean',
@@ -616,18 +641,13 @@ const baseField = {
         isSortable: {
             type: 'boolean',
         },
-        isDateTime: {
-            type: 'boolean',
-        },
         isNegative: {
             type: 'boolean',
         },
         isEditable: {
             type: 'boolean',
         },
-        dateRangeFiller: {
-            type: 'string',
-        },
+        dateTime,
         display,
         shortDisplay: display,
         listDisplay,
@@ -652,18 +672,12 @@ const baseField = {
             type: 'string',
             enum: [
                 'average',
-                'weightedAvg',
-                'array',
                 'distinctArray',
                 'distinct',
-                'concatenate',
                 'sum',
-                'percentage',
                 'min',
                 'max',
                 'range',
-                'median',
-                'mode',
                 'oneOrNothing',
                 'last',
             ],
