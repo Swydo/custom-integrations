@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/Swydo/custom-integrations/compare/0.3.1...0.3.2) (2019-08-07)
+
+
+### Bug Fixes
+
+* do not require endpoint id for filter option requests ([563f9f4](https://github.com/Swydo/custom-integrations/commit/563f9f4))
+
+
+
 ### [0.3.1](https://github.com/Swydo/custom-integrations/compare/0.3.0...0.3.1) (2019-08-07)
 
 
