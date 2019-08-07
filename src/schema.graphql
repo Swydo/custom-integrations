@@ -49,10 +49,6 @@ type Cache {
     expireAfterSeconds: Int
 }
 
-type Comparison {
-    enabled: Boolean
-}
-
 type Display {
     type: String!
     format: String
@@ -218,7 +214,6 @@ type Endpoint {
     metrics: Metrics
     dimensions: Dimensions
     cache: Cache
-    comparison: Comparison
     category: String
     scope: ScopeOption
     pagination: Pagination

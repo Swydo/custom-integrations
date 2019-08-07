@@ -245,11 +245,6 @@ const endpoints = [
             // Number (optional) - expire cache after amount of seconds
             expireAfterSeconds: 3600, // default 3600, max 3600
         },
-        // Object (optional) - comparison options
-        comparison: {
-            // Boolean (optional) - indicates whether the endpoint can handle comparison
-            enabled: true, // default true
-        },
         // Object (optional) - scope options
         scope: {
             // Boolean (optional) - indicates whether the endpoint supports scopes

@@ -422,17 +422,6 @@ const cache = {
     },
 };
 
-const comparison = {
-    type: 'object',
-    additionalProperties: false,
-    required: ['enabled'],
-    properties: {
-        enabled: {
-            type: 'boolean',
-        },
-    },
-};
-
 const pagination = {
     type: 'object',
     additionalProperties: false,
@@ -741,7 +730,6 @@ const endpoint = {
         metrics: minMax,
         dimensions: minMax,
         cache,
-        comparison,
         pagination,
         scope: endpointScope,
         fields: {
