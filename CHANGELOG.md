@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Swydo/custom-integrations/compare/0.2.17...0.3.0) (2019-08-07)
+
+
+### Features
+
+* support multiple rate limits ([#12](https://github.com/Swydo/custom-integrations/issues/12)) ([ba352ad](https://github.com/Swydo/custom-integrations/commit/ba352ad))
+
+
+
 ### [0.2.17](https://github.com/Swydo/custom-integrations/compare/0.2.16...0.2.17) (2019-08-07)
 
 
