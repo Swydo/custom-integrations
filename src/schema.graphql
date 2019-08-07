@@ -225,7 +225,7 @@ type Adapter {
     id: ID!
     authentication: JSON
     scope: Scope
-    rateLimit: RateLimit
+    rateLimits: [RateLimit]
     endpoints: [Endpoint]
     endpoint(id: ID!): Endpoint
 }

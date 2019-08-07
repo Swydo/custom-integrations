@@ -177,15 +177,17 @@ const adapter = {
             },
         ],
     },
-    // Object - rate limit specification, limit the rate of requests
-    rateLimit: {
-        // Number -  time in milliseconds until the rate limit resets
-        resetInterval: 1000,
-        // Number - amount of requests that can be done per interval
-        requests: 1,
-        // [String] (optional) - entity the rate limit applies to
-        per: ['endpoint' | 'user'],
-    },
+    // [Object] - rate limit specification, limit the rate of requests
+    rateLimits: [
+        {
+            // Number -  time in milliseconds until the rate limit resets
+            resetInterval: 1000,
+            // Number - amount of requests that can be done per interval
+            requests: 1,
+            // [String] (optional) - entity the rate limit applies to
+            per: ['endpoint' | 'user'],
+        }
+    ],
     // [Object] - endpoint specification, configuration for each api endpoint
     endpoints,
 };

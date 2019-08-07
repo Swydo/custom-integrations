@@ -771,7 +771,10 @@ const configSchema = {
                 },
                 authentication,
                 scope,
-                rateLimit,
+                rateLimits: {
+                    type: 'array',
+                    items: rateLimit,
+                },
                 endpoints: {
                     type: 'array',
                     items: endpoint,
