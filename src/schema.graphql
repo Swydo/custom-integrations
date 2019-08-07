@@ -53,11 +53,6 @@ type Comparison {
     enabled: Boolean
 }
 
-type Totals {
-    aggregate: Boolean
-    useGrandTotals: Boolean
-}
-
 type Display {
     type: String!
     format: String
@@ -224,7 +219,6 @@ type Endpoint {
     dimensions: Dimensions
     cache: Cache
     comparison: Comparison
-    totals: Totals
     category: String
     scope: ScopeOption
     pagination: Pagination

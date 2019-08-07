@@ -446,20 +446,6 @@ const pagination = {
     },
 };
 
-const totals = {
-    type: 'object',
-    additionalProperties: false,
-    required: ['aggregate', 'useGrandTotals'],
-    properties: {
-        aggregate: {
-            type: 'boolean',
-        },
-        useGrandTotals: {
-            type: 'boolean',
-        },
-    },
-};
-
 const display = {
     type: 'object',
     additionalProperties: false,
@@ -757,7 +743,6 @@ const endpoint = {
         cache,
         comparison,
         pagination,
-        totals,
         scope: endpointScope,
         fields: {
             type: 'array',

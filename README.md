@@ -250,13 +250,6 @@ const endpoints = [
             // Boolean (optional) - indicates whether the endpoint can handle comparison
             enabled: true, // default true
         },
-        // Object (optional) - totals options
-        totals: {
-            // Boolean (optional) - auto calculate totals that are missing in the response
-            aggregate: false, // default false
-            // Boolean (optional) - auto calculate the totals based on all returned rows instead of limited rows
-            useGrandTotals: false, // default false
-        },
         // Object (optional) - scope options
         scope: {
             // Boolean (optional) - indicates whether the endpoint supports scopes
