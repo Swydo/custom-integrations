@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/Swydo/custom-integrations/compare/0.3.3...0.3.4) (2019-08-08)
+
+
+### Bug Fixes
+
+* add missing short display to graphql schema ([199e086](https://github.com/Swydo/custom-integrations/commit/199e086))
+
+
+
 ### [0.3.3](https://github.com/Swydo/custom-integrations/compare/0.3.2...0.3.3) (2019-08-08)
 
 
