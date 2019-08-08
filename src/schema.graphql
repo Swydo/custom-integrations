@@ -124,6 +124,7 @@ type SubField {
     isNegative: Boolean
     dateTime: DateTime
     display: Display
+    shortDisplay: Display
     listDisplay: ListDisplay
     default: JSON
     aggregate: String
@@ -149,6 +150,7 @@ type Field {
     isNegative: Boolean
     dateTime: DateTime
     display: Display
+    shortDisplay: Display
     listDisplay: ListDisplay
     default: JSON
     aggregate: String
