@@ -682,10 +682,10 @@ const baseField = {
                 'last',
             ],
         },
-        requestName: {
+        requestKey: {
             type: 'string',
         },
-        responseName: {
+        responseKey: {
             type: 'string',
         },
         formula: {

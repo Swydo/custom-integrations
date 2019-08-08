@@ -393,10 +393,10 @@ const fields = [
             'range' | // for date time fields
             'last' |
             'oneOrNothing',
-        // String (optional) - how the field should be requested.  If used, this name will be sent to the connector instead of the field's "key" value
-        requestName: 'foo',
-        // String (optional) - name that's returned for the field in the response.Tthe response with this name will be mapped to the field's "key" value
-        responseName: 'bar',
+        // String (optional) - key how the field should be requested.  If used, this key will be sent to the connector instead of the field's "key" value
+        requestKey: 'foo',
+        // String (optional) - key that's returned for the field in the response. The response with this name will be mapped to the field's "key" value
+        responseKey: 'bar',
         // String (optional) - formula to calculate the field value
         formula: 'foo / 100',
         // Object (optional) - specify how a field should be sorted

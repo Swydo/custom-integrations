@@ -127,8 +127,8 @@ type SubField {
     listDisplay: ListDisplay
     default: JSON
     aggregate: String
-    requestName: String
-    responseName: String
+    requestKey: String
+    responseKey: String
     formula: String
     sort: Sort
     filter: Filter
@@ -152,8 +152,8 @@ type Field {
     listDisplay: ListDisplay
     default: JSON
     aggregate: String
-    requestName: String
-    responseName: String
+    requestKey: String
+    responseKey: String
     formula: String
     sort: Sort
     filter: Filter
