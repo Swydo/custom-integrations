@@ -197,7 +197,6 @@ input DataInput {
     credentials: JSON
     scope: JSON
     sort: JSON
-    originalMetrics: [String]
 }
 
 type DataResponse {

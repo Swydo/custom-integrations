@@ -460,8 +460,6 @@ A connector is a function/promise that's responsible for formatting the input op
 async function connector({
     // [String] - the requested metrics
     metrics: ['bar'],
-    // [String] - the original field keys before they are manipulated for the request by e.g. 'requestName`
-    originalMetrics: ['foo'],
     // [String] - the requested dimensions
     dimensions: ['foo'],
     // [Number] - limits set for dimensions. The index of the limit number corresponds to the index of the fields in dimensions
