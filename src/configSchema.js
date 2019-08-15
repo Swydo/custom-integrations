@@ -19,6 +19,23 @@ const FILTER_OPERATOR_TYPES = {
 };
 
 const fieldFormatters = [
+    'number',
+    'currency',
+    'percentage',
+    'object',
+    'boolean',
+    'time',
+    'link',
+    'text',
+    'subParts',
+    'multiLineUrl',
+    'timeBucket',
+    'icon',
+    'base64Image',
+    'image',
+];
+
+const dateTimeTypes = [
     'date',
     'day',
     'year',
@@ -38,21 +55,6 @@ const fieldFormatters = [
     'dayOfMonth',
     'weekOfYear',
     'isoWeekOfYear',
-    'number',
-    'currency',
-    'percentage',
-    'object',
-    'boolean',
-    'time',
-    'link',
-    'text',
-    'subParts',
-    'multiLineUrl',
-    'timeBucket',
-    'icon',
-    'badOkGood',
-    'base64Image',
-    'image',
 ];
 
 const listFormatters = ['separatedValues', 'unorderedList'];
@@ -593,8 +595,9 @@ const dateTime = {
     additionalProperties: false,
     required: ['type'],
     properties: {
-        key: {
+        type: {
             type: 'string',
+            enum: dateTimeTypes,
         },
     },
 };
