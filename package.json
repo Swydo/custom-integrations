@@ -6,6 +6,9 @@
     "node": "10"
   },
   "main": "src/index.js",
+  "bin": {
+    "custom-integrations": "cli/index.js"
+  },
   "scripts": {
     "can-npm-publish": "can-npm-publish --verbose",
     "coverage-report": "nyc report",
@@ -13,7 +16,8 @@
     "eslint": "eslint ./src",
     "mocha": "npx nyc --silent mocha \"src/**/*.spec.js\" --exit",
     "release": "standard-version",
-    "test": "npm run eslint && npm run mocha && npm run coverage-report && npm run coverage-check"
+    "test": "npm run eslint && npm run mocha && npm run coverage-report && npm run coverage-check",
+    "cli": "node cli/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,13 +33,18 @@
   },
   "homepage": "https://github.com/Swydo/custom-integrations#readme",
   "dependencies": {
+    "@swydo/byol": "0.2.1",
     "ajv": "6.10.0",
     "apollo-server-core": "2.0.6",
+    "debug": "4.1.1",
+    "express": "4.17.1",
     "graphql": "0.13.2",
     "graphql-import": "0.7.1",
     "graphql-tools": "4.0.3",
     "graphql-type-json": "0.2.1",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "supports-color": "7.0.0",
+    "yargs": "13.3.0"
   },
   "devDependencies": {
     "can-npm-publish": "1.3.1",
