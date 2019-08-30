@@ -31,7 +31,7 @@ describe('schemaHelprs', function () {
 
             const failingValidate = () => validate(schemaName, obj);
 
-            expect(failingValidate).to.throw('foo.foo should be string');
+            expect(failingValidate).to.throw('INVALID_CONFIG');
         });
     });
 

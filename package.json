@@ -36,6 +36,7 @@
     "@swydo/byol": "0.2.1",
     "ajv": "6.10.0",
     "apollo-server-core": "2.0.6",
+    "better-ajv-errors": "0.6.4",
     "chokidar": "3.0.2",
     "debounce": "1.2.0",
     "debug": "4.1.1",
