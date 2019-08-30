@@ -51,6 +51,11 @@ function startServer(port) {
         });
     });
 
+    app.get('/ping', (req, res) => {
+        res.status(204);
+        res.end();
+    });
+
     app.listen(port);
 
     debug('Listening on port', port);
