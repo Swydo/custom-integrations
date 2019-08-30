@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/Swydo/custom-integrations/compare/0.7.1...0.8.0) (2019-08-30)
+
+
+### Features
+
+* **cli:** add --tunnel to start command to allow connecting from the outside world ([#21](https://github.com/Swydo/custom-integrations/issues/21)) ([737be30](https://github.com/Swydo/custom-integrations/commit/737be30))
+
+
+
 ### [0.7.1](https://github.com/Swydo/custom-integrations/compare/0.7.0...0.7.1) (2019-08-30)
 
 
