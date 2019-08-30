@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/Swydo/custom-integrations/compare/0.4.1...0.5.0) (2019-08-30)
+
+
+### Features
+
+* **cli:** add ping endpoint to local server to allow online/offline detection ([#18](https://github.com/Swydo/custom-integrations/issues/18)) ([1686a38](https://github.com/Swydo/custom-integrations/commit/1686a38))
+
+
+
 ### [0.4.1](https://github.com/Swydo/custom-integrations/compare/0.4.0...0.4.1) (2019-08-27)
 
 
