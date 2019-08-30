@@ -36,6 +36,8 @@
     "@swydo/byol": "0.2.1",
     "ajv": "6.10.0",
     "apollo-server-core": "2.0.6",
+    "chokidar": "3.0.2",
+    "debounce": "1.2.0",
     "debug": "4.1.1",
     "express": "4.17.1",
     "graphql": "0.13.2",
@@ -44,6 +46,7 @@
     "graphql-type-json": "0.2.1",
     "lodash": "4.17.15",
     "supports-color": "7.0.0",
+    "terminal-kit": "1.31.1",
     "yargs": "13.3.0"
   },
   "devDependencies": {
