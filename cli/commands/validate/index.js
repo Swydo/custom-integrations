@@ -28,7 +28,7 @@ const handler = async ({ watch, fullscreen, ...globalOptions }) => {
         if (fullscreen) {
             terminal.clear();
             debug('Watching for file changes');
-            console.log(''); // eslint-disable-line no-consol
+            console.log(''); // eslint-disable-line no-console
         }
 
         await validateConfig();

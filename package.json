@@ -13,7 +13,7 @@
     "can-npm-publish": "can-npm-publish --verbose",
     "coverage-report": "nyc report",
     "coverage-check": "nyc check-coverage",
-    "eslint": "eslint ./src",
+    "eslint": "eslint ./src ./cli",
     "mocha": "npx nyc --silent mocha \"src/**/*.spec.js\" --exit",
     "release": "standard-version",
     "test": "npm run eslint && npm run mocha && npm run coverage-report && npm run coverage-check",
