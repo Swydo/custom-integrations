@@ -17,40 +17,40 @@ const builder = yargs => (
 const handler = async ({ watch, fullscreen, ...globalOptions }) => {
     handleGlobalOptions(globalOptions);
 
-    if (fullscreen) {
-        terminal.fullscreen();
-    } else if (watch) {
-        debug('Watching for file changes');
-        console.log(''); // eslint-disable-line no-console
-    }
-
     const validate = async () => {
-        if (fullscreen) {
+        if (watch && fullscreen) {
             terminal.clear();
             debug('Watching for file changes');
-            console.log(''); // eslint-disable-line no-console
         }
 
+        debug('Validating');
         await validateConfig();
+        debug('Done');
     };
 
-    const debouncedValidate = debounce(validate, 500);
-
-    terminal.grabInput({ mouse: 'button' });
-    terminal.on('key', (name) => {
-        if (name === 'CTRL_C' || name === 'ESCAPE') {
-            terminal.processExit(0);
-        }
-    });
-
     if (watch) {
+        if (fullscreen) {
+            terminal.fullscreen();
+        }
+
+        debug('Watching for file changes');
+
+        const debouncedValidate = debounce(validate, 500);
+
+        terminal.grabInput({ mouse: 'button' });
+        terminal.on('key', (name) => {
+            if (name === 'CTRL_C' || name === 'ESCAPE') {
+                terminal.processExit(0);
+            }
+        });
+
         chokidar.watch(process.cwd(), { ignored: [/node_modules/] })
             .on('change', () => {
                 debouncedValidate();
             })
             .on('ready', () => debouncedValidate());
     } else {
-        debouncedValidate();
+        await validate();
     }
 };
 
