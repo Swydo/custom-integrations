@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](https://github.com/Swydo/custom-integrations/compare/0.8.1...0.8.2) (2019-09-03)
+
+
+### Bug Fixes
+
+* **cli:** fix fullscreen option having an effect when not watching ([#23](https://github.com/Swydo/custom-integrations/issues/23)) ([33422bb](https://github.com/Swydo/custom-integrations/commit/33422bb))
+
+
+
 ### [0.8.1](https://github.com/Swydo/custom-integrations/compare/0.8.0...0.8.1) (2019-09-03)
 
 
