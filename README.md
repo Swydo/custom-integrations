@@ -96,10 +96,6 @@ An `adapter` is a container for a set of different endpoints that defines authen
 const adapter = {
     // String - identifier, must be kebab case e.g. foo-bar
     id: 'foo',
-    // String (optional) - human readable name
-    name: 'Foo',
-    // String (optional) - a url to an icon
-    icon: 'https://example.com/foo.png',
     // Object - authentication specification
     authentication: {
         // String - type
@@ -134,12 +130,12 @@ const adapter = {
             authorize_url: 'https://example.com/oauth/authorize',
             // String - OAuth1 signature method
             signature_method: 'HMAC-SHA1' | 'RSA-SHA1' | 'PLAINTEXT',
-            // Object - variable references to environment variables
+            // Object - environment variables
             environment: {
-                // String - env var name containing the OAuth1 consumer key
-                consumer_key: 'EXAMPLE_CONSUMER_KEY',
-                // String - env var name containing the OAuth1 consumer secret
-                consumer_secret: 'EXAMPLE_CONSUMER_SECRET',
+                // String - OAuth1 consumer key
+                consumer_key: process.env.EXAMPLE_CONSUMER_KEY,
+                // String - OAuth1 consumer secret
+                consumer_secret: process.env.EXAMPLE_CONSUMER_SECRET,
             },
         },
         // Object (required when type = oauth2) - options used for OAuth2
@@ -150,12 +146,12 @@ const adapter = {
             base_site: 'https://oauth2.example.com',
             // [String] - OAuth2 scopes
             scopes: ['email'],
-            // Object - variable references to environment variables
+            // Object - environment variables
             environment: {
-                // String - env var name containing the OAuth2 client id
-                client_id: 'EXAMPLE_CLIENT_ID',
-                // String - env var name containing the OAuth2 client_secret
-                client_secret: 'EXAMPLE_CLIENT_SECRET',
+                // String - OAuth2 client id
+                client_id: process.env.EXAMPLE_CLIENT_ID,
+                // String - OAuth2 client_secret
+                client_secret: process.env.EXAMPLE_CLIENT_SECRET,
             },
         },
     },
@@ -398,6 +394,30 @@ const fields = [
         // String (optional) - key that's returned for the field in the response. The response with this name will be mapped to the field's "key" value
         responseKey: 'bar',
         // String (optional) - formula to calculate the field value
+        // Supported operators:
+        // ( parenthesis can be used to group together parts of a formula - '(clicks * 2) / 100'
+        // ) parenthesis can be used to group together parts of a formula - '(clicks * 2) / 100'
+        // * multiply a value - 'clicks * 2'
+        // / divide a value - 'clicks / impressions'
+        // + add a value - 'clicks + 1'
+        // - subtract a value - 'clicks - 1'
+        // | conditional, use this to conditionally use a value - 'clicks | impressions' // if 'clicks' is defined, use that value, otherwise use impressions
+        // & check if both values are truthy - 'clicks & impressions' // returns 1 if 'clicks' and 'impressions' are truthy, 0 if the result is falsy
+        // := use default value if it's undefined - 'clicks := 0'
+        // >= greater than or equal to - 'clicks >= impressions' // returns 1 if 'clicks' is greater than or equal to 'impressions', otherwise 0 is returned
+        // > greater than - 'clicks > impressions' // returns 1 if 'clicks' is greater than 'impressions', otherwise 0 is returned
+        // <= less than or equal to - 'clicks <= impressions' // returns 1 if 'clicks' is less than or equal to 'impressions', otherwise 0 is returned
+        // < less than - 'clicks < impressions' // returns 1 if 'clicks' is less than 'impressions', otherwise 0 is returned
+        // != not equal to - 'clicks != impressions' // returns 1 if 'clicks' is not equal to 'impressions', otherwise 0 is returned
+        // = equal to - 'clicks = impressions' // returns 1 if 'clicks' is equal to 'impressions', otherwise 0 is returned
+        // ~ approximately similar to - '10~10.1' // returns 1 because 10 is approximately similar to 10.1
+        // ! not - '!clicks' // returns 1 if clicks is falsy
+        // MINUS converts the value to a minus number - 'MINUS(2)'
+        // ROUND rounds the inserted value - 'ROUND(1.49)' // result: 1 - 'ROUND(1.5)' // result: 2
+        // FLOOR rounds the inserted value down - 'FLOOR(1.49)' // result: 1 - 'FLOOR(1.5)' // result: 1
+        // CEIL rounds the inserted value up - 'CEIL(1.49)' // result: 2 - 'CEIL(1.5)' // result: 2
+        // SQRT calculates the square root of the inserted value - 'SQRT(9)' // result: 3
+        // ABS returns the absolute value of a number - 'ABS(-1)' // result: 1
         formula: 'foo / 100',
         // Object (optional) - specify how a field should be sorted
         sort: {
