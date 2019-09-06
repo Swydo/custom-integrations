@@ -1,4 +1,4 @@
-const debug = require('debug')('custom-integrations:start');
+const debug = require('debug')('custom-integrations:cli:start');
 const ngrok = require('ngrok');
 
 async function startLocalTunnel(port) {

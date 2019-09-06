@@ -1,10 +1,15 @@
 const GraphQLJSON = require('graphql-type-json');
 const packageJSON = require('../package.json');
+const { validateConfig } = require('./configSchema');
 
 const resolvers = {
     JSON: GraphQLJSON,
     Query: {
-        adapter: ({ adapter }) => adapter,
+        adapter: (config) => {
+            validateConfig(config);
+
+            return config.adapter;
+        },
         version: () => packageJSON.version,
     },
     Adapter: {

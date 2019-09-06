@@ -1,9 +1,9 @@
 const path = require('path');
+const debug = require('debug')('custom-integrations:handler');
 const { importSchema } = require('graphql-import');
 const { makeExecutableSchema } = require('graphql-tools');
 const { runQuery } = require('apollo-server-core');
 const { resolvers } = require('./resolvers');
-const { validateConfig } = require('./configSchema');
 
 const typeDefs = importSchema(path.join(__dirname, './schema.graphql'));
 const schema = makeExecutableSchema({ typeDefs, resolvers });
@@ -23,13 +23,13 @@ function getAsyncHandler(config) {
 
             if (result.errors) {
                 // eslint-disable-next-line no-console
-                console.log(result.errors);
+                debug(result.errors);
             }
 
             return result;
         } catch (error) {
             // eslint-disable-next-line no-console
-            console.log(error);
+            debug(error);
 
             throw error;
         }
@@ -37,7 +37,6 @@ function getAsyncHandler(config) {
 }
 
 function getHandler(config) {
-    validateConfig(config);
     const handler = getAsyncHandler(config);
 
     return (event, context, callback) => {

@@ -53,8 +53,8 @@ jobs:
       - run:
           name: Check coverage
           command: |
-            npm run coverage-check -s
             npm run coverage-report -s
+            npm run coverage-check -s
   release:
     executor: nodejs_v10
     steps:

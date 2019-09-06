@@ -18,6 +18,7 @@ describe('resolvers', function () {
                 const config = {
                     adapter: {
                         id: 'foo',
+                        endpoints: [],
                     },
                 };
 
@@ -26,6 +27,19 @@ describe('resolvers', function () {
 
                 expect(result).to.exist;
                 expect(result).to.have.property('id', config.adapter.id);
+            });
+
+            it('throws when the adapter config is invalid', function () {
+                const config = {
+                    adapter: {
+                        id: 'foo',
+                    },
+                };
+
+                const resolver = resolvers.Query.adapter;
+                const failingCall = () => resolver(config);
+
+                expect(failingCall).to.throw('INVALID_CONFIG');
             });
         });
 

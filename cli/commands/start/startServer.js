@@ -1,6 +1,6 @@
 const express = require('express');
 const { invokeHandler } = require('@swydo/byol');
-const debug = require('debug')('custom-integrations:start');
+const debug = require('debug')('custom-integrations:cli:start');
 const { getMainPath } = require('../../lib/getMainPath');
 
 function startServer(port) {

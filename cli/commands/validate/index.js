@@ -1,7 +1,7 @@
 const chokidar = require('chokidar');
 const debounce = require('debounce');
 const { terminal } = require('terminal-kit');
-const debug = require('debug')('custom-integrations:validate');
+const debug = require('debug')('custom-integrations:cli:validate');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
 const { validateConfig } = require('./validateConfig');
 
