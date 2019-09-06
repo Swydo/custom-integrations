@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/Swydo/custom-integrations/compare/0.8.3...0.9.0) (2019-09-06)
+
+
+### Features
+
+* **cli:** have "validate" exit with proper code depending on validation result ([#25](https://github.com/Swydo/custom-integrations/issues/25)) ([994765d](https://github.com/Swydo/custom-integrations/commit/994765d))
+
+
+
 ### [0.8.3](https://github.com/Swydo/custom-integrations/compare/0.8.2...0.8.3) (2019-09-06)
 
 
