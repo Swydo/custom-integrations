@@ -233,7 +233,12 @@ type Adapter {
     endpoint(id: ID!): Endpoint
 }
 
+type Config {
+    isValid: Boolean!
+}
+
 type Query {
     adapter: Adapter
     version: String!
+    config: Config
 }

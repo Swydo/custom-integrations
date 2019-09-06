@@ -52,6 +52,22 @@ describe('resolvers', function () {
                 expect(result).to.have.equal(packageJSON.version);
             });
         });
+
+        describe('#config', function () {
+            it('returns the raw adapter cofiguration', function () {
+                const config = {
+                    adapter: {
+                        id: 'foo',
+                        endpoints: [],
+                    },
+                };
+
+                const resolver = resolvers.Query.config;
+                const result = resolver(config);
+
+                expect(result).to.equal(config);
+            });
+        });
     });
 
     describe('Adapter resolvers', function () {
@@ -89,6 +105,37 @@ describe('resolvers', function () {
 
                 expect(result).to.exist;
                 expect(result).to.deep.equal({ value });
+            });
+        });
+    });
+
+    describe('Config resolvers', function () {
+        describe('#isValid', function () {
+            it('returns true when the configuration is valid', function () {
+                const config = {
+                    adapter: {
+                        id: 'foo',
+                        endpoints: [],
+                    },
+                };
+
+                const resolver = resolvers.Config.isValid;
+                const result = resolver(config);
+
+                expect(result).to.equal(true);
+            });
+
+            it('returns false when the configuration is not valid', function () {
+                const config = {
+                    adapter: {
+                        id: 'foo',
+                    },
+                };
+
+                const resolver = resolvers.Config.isValid;
+                const result = resolver(config);
+
+                expect(result).to.equal(false);
             });
         });
     });

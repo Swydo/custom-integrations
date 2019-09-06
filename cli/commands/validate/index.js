@@ -24,8 +24,10 @@ const handler = async ({ watch, fullscreen, ...globalOptions }) => {
         }
 
         debug('Validating');
-        await validateConfig();
+        const isValid = await validateConfig();
         debug('Done');
+
+        return isValid;
     };
 
     if (watch) {
@@ -50,7 +52,10 @@ const handler = async ({ watch, fullscreen, ...globalOptions }) => {
             })
             .on('ready', () => debouncedValidate());
     } else {
-        await validate();
+        const isValid = await validate();
+
+        const exitCode = isValid ? 0 : 1;
+        process.exit(exitCode);
     }
 };
 

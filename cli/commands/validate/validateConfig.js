@@ -9,8 +9,8 @@ async function validateConfig() {
         event: {
             query: `
                 query {
-                    adapter {
-                        id
+                    config {
+                        isValid
                     }
                 }
             `,
@@ -19,9 +19,18 @@ async function validateConfig() {
     };
 
     try {
-        await invokeHandler(invokeOptions);
+        const {
+            data: {
+                config: {
+                    isValid,
+                },
+            },
+        } = await invokeHandler(invokeOptions);
+
+        return isValid;
     } catch (e) {
         // Intentionally left blank. Handler itself will log errors right now.
+        return false;
     }
 }
 
