@@ -9,7 +9,6 @@ const fields = [
 const endpoints = [
     {
         id: '<%= name %>-endpoint',
-        isSelectable: true,
         connector: connector,
         fields,
     },
