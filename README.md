@@ -199,7 +199,7 @@ const endpoints = [
         // String - identifier
         id: 'foo',
         // Boolean (optional) - indicates whether the endpoint is selectable in the gui
-        isSelectable: true, // default false
+        isSelectable: true, // default true
         // String (optional) - category name as it a appears in the gui where fields from this endpoint belong to
         category: 'foo',
         // Object (optional) - date range options
