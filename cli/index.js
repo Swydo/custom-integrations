@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
+const initCommand = require('./commands/init');
 const startCommand = require('./commands/start');
 const validateCommand = require('./commands/validate');
 
@@ -11,6 +12,7 @@ yargs
         type: 'boolean',
         default: false,
     })
+    .command(initCommand)
     .command(startCommand)
     .command(validateCommand)
     .argv;
