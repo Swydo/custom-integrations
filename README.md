@@ -7,7 +7,7 @@
 <br/>
 <br/>
 
-Swydo custom integrations enables any online platform to be connected to Swydo. Join us on [gitter](https://gitter.im/Swydo/custom-integrations).
+Swydo custom integrations enables any online platform to connect to Swydo. Join us on [Gitter](https://gitter.im/Swydo/custom-integrations).
 
 ---
 

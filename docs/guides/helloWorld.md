@@ -207,11 +207,11 @@ const fields = [
 ```
 
 When the user chooses "length" as the dimension Swydo will detect all unique values of "length" and combine the values
-of "word" automatically.
+of "word" and "length" automatically.
 
 | Length | World |
 | --- | --- |
-| 5  | hello, world |
+| 10  | hello, world |
 | 1  | ! |
 
 With these changes your `src/adapter.js` file should look like this:
@@ -292,7 +292,7 @@ before running it again to see how errors are reported.
 Once the configuration is valid we can run `npm start`. You'll notice this command prints out a URL after a short while.
 Swydo can use this URL to connect to your local environment, so let's set that up.
 
-head over to [Swydo](https://app.swydo.com). From any page click your profile icon in the upper-right of the screen
+Head over to [Swydo](https://app.swydo.com). From any page click your profile icon in the upper-right of the screen
 and select "Custom integrations". From there head over to the "development environment". Copy your unique URL from
 the terminal into the input field and activate the environment. After a short while the page should update and you'll
 be greeted with, among other things, a green dot and the word "Connected". Swydo is now linked to your computer.
@@ -303,7 +303,7 @@ Now lets try it out. Head over to the reporting section by using the side menu a
 - Select your development environment from the list of providers.
 - Connect a new account.
 - Run through the steps and save the data source.
-- Select the star ships endpoint.
+- Select the only available endpoint (endpoints are displayed as categories to end users).
 - Fill out the settings, select an combination of metrics and dimensions.
 - Click save.
 
