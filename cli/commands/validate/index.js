@@ -1,6 +1,5 @@
 const chokidar = require('chokidar');
 const debounce = require('debounce');
-const { terminal } = require('terminal-kit');
 const debug = require('debug')('custom-integrations:cli:validate');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
 const { validateConfig } = require('./validateConfig');
@@ -14,15 +13,10 @@ const builder = yargs => (
         .option('fullscreen', { type: 'boolean', default: true })
 );
 
-const handler = async ({ watch, fullscreen, ...globalOptions }) => {
+const handler = async ({ watch, ...globalOptions }) => {
     handleGlobalOptions(globalOptions);
 
     const validate = async () => {
-        if (watch && fullscreen) {
-            terminal.clear();
-            debug('Watching for file changes');
-        }
-
         debug('Validating');
         const isValid = await validateConfig();
         debug('Done');
@@ -31,20 +25,9 @@ const handler = async ({ watch, fullscreen, ...globalOptions }) => {
     };
 
     if (watch) {
-        if (fullscreen) {
-            terminal.fullscreen();
-        }
-
         debug('Watching for file changes');
 
         const debouncedValidate = debounce(validate, 500);
-
-        terminal.grabInput({ mouse: 'button' });
-        terminal.on('key', (name) => {
-            if (name === 'CTRL_C' || name === 'ESCAPE') {
-                terminal.processExit(0);
-            }
-        });
 
         chokidar.watch(process.cwd(), { ignored: [/node_modules/] })
             .on('change', () => {
