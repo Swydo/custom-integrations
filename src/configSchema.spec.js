@@ -23,6 +23,7 @@ describe('configSchema', function () {
                 },
                 endpoints: [{
                     id: 'bar',
+                    name: 'bar',
                     connector: () => 'bar',
                     fields: [{
                         id: 'bar',

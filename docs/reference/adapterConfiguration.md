@@ -123,6 +123,8 @@ const endpoints = [
     {
         // String - identifier
         id: 'foo',
+        // String - endpoint name as it a appears in the gui
+        name: 'Foo'
         // Boolean (optional) - indicates whether the endpoint is selectable in the gui
         isSelectable: true, // default true
         // String (optional) - category name as it a appears in the gui where fields from this endpoint belong to

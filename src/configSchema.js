@@ -731,9 +731,12 @@ const endpointScope = {
 const endpoint = {
     type: 'object',
     additionalProperties: false,
-    required: ['id', 'fields', 'connector'],
+    required: ['id', 'name', 'fields', 'connector'],
     properties: {
         id: {
+            type: 'string',
+        },
+        name: {
             type: 'string',
         },
         category: {

@@ -211,6 +211,7 @@ type DataResponse {
 
 type Endpoint {
     id: ID!
+    name: String!
     isSelectable: Boolean
     dateRange: DateRange
     credentials: Credentials
