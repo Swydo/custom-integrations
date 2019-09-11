@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.3](https://github.com/Swydo/custom-integrations/compare/0.10.2...0.10.3) (2019-09-11)
+
+
+### Bug Fixes
+
+* **cli:** fix breaking terminal after exiting validate with --watch ([#31](https://github.com/Swydo/custom-integrations/issues/31)) ([8d85fa2](https://github.com/Swydo/custom-integrations/commit/8d85fa2))
+
+
+
 ### [0.10.2](https://github.com/Swydo/custom-integrations/compare/0.10.1...0.10.2) (2019-09-10)
 
 
