@@ -1,10 +1,22 @@
 const debug = require('debug')('custom-integrations:cli:start');
-const ngrok = require('ngrok');
+const localtunnel = require('localtunnel');
 
 async function startLocalTunnel(port) {
-    const url = await ngrok.connect(port);
+    const tunnel = await new Promise((resolve, reject) => {
+        localtunnel(port, (err, res) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        });
+    });
 
-    debug(url);
+    tunnel.on('close', () => {
+        debug('Tunnel closed unexpectedly');
+    });
+
+    debug(tunnel.url);
 }
 
 module.exports = {
