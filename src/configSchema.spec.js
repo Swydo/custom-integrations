@@ -230,6 +230,38 @@ describe('configSchema', function () {
         });
     });
 
+    describe('#fieldFilterCustomValidator', function () {
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
+        const customValidator = fieldSchema.properties.filter.custom;
+
+        it('validates when data has options', function () {
+            const validateContext = {};
+            const data = { options: { } };
+
+            const isValid = customValidator(validateContext, data);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('validates when data has optionsRequest', function () {
+            const validateContext = {};
+            const data = { optionsRequest: { } };
+
+            const isValid = customValidator(validateContext, data);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('invalidates when data has no options or no optionsRequest', function () {
+            const validateContext = {};
+            const data = {};
+
+            const isValid = customValidator(validateContext, data);
+
+            expect(isValid).to.be.false;
+        });
+    });
+
     describe('#endpointPartCustomValidator', function () {
         const customValidator = configSchema.properties.adapter.properties.endpoints.items.properties.connector.custom;
 

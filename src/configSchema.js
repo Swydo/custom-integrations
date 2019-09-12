@@ -160,6 +160,7 @@ const formOptions = {
             type: 'array',
             items: {
                 type: 'object',
+                additionalProperties: false,
                 required: ['label', 'type', 'placeholder', 'key'],
                 properties: {
                     label: {
@@ -286,7 +287,7 @@ const scopePart = {
             // eslint-disable-next-line no-param-reassign
             validateContext.errors = [
                 {
-                    keyword: 'custom',
+                    keyword: 'scope.part[]',
                     message: `should have one of required properties ${uniqueKeys.join(', ')}`,
                 },
             ];
@@ -295,7 +296,7 @@ const scopePart = {
             // eslint-disable-next-line no-param-reassign
             validateContext.errors = [
                 {
-                    keyword: 'custom',
+                    keyword: 'scope.part[]',
                     message: `should only have one of ${setUniqueKeys.join(', ')}`,
                 },
             ];
@@ -513,6 +514,8 @@ const filterOperator = {
         },
         capabilities: {
             type: 'object',
+            additionalProperties: false,
+            required: ['caseSensitive', 'caseInsensitive', 'negate'],
             properties: {
                 caseSensitive: {
                     type: 'boolean',
@@ -587,6 +590,23 @@ const filter = {
             type: 'array',
             items: filterOption,
         },
+    },
+    custom(validateContext, data) {
+        const { options: filterOptions, optionsRequest: filterOptionsRequest } = data;
+
+        if (filterOptions || filterOptionsRequest) {
+            return true;
+        }
+
+        // eslint-disable-next-line no-param-reassign
+        validateContext.errors = [
+            {
+                keyword: 'filter',
+                message: 'should specify options or optionsRequest',
+            },
+        ];
+
+        return false;
     },
 };
 
@@ -765,7 +785,7 @@ const endpoint = {
                 // eslint-disable-next-line no-param-reassign
                 validateContext.errors = [
                     {
-                        keyword: 'custom',
+                        keyword: 'connector',
                         message: 'should be of type function or Promise',
                     },
                 ];
