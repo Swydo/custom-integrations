@@ -8,7 +8,8 @@ const fields = [
 
 const endpoints = [
     {
-        id: '<%= name %>-endpoint',
+        id: 'first-endpoint',
+        name: 'First endpoint',
         connector: connector,
         fields,
     },

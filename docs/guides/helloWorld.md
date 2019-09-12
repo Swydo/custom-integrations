@@ -242,7 +242,8 @@ const fields = [
 
 const endpoints = [
     {
-        id: 'swydo-hello-world-endpoint',
+        id: 'first-endpoint',
+        name: 'First endpoint',
         connector: connector,
         fields,
     },
