@@ -477,7 +477,7 @@ async function connector({
         // Number (optional) - the total number of rows to expect. All other pages will be requested automatically when this value is returned on page one and perPage is available
         resultCount: 3,
         // Any (optional) - when returned a truthy value, the connector will be called again with nextPage set to this value
-        any: 'http://example.com/page/3',
+        nextPage: 'http://example.com/page/3',
     };
 }
 ```
