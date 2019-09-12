@@ -363,6 +363,24 @@ const fields = [
             max: 2,
             // String (optional) - how the filter should be requested. This name will be sent to the connector instead of the field's "key" value
             requestKey: 'foo',
+            // Object (optional) - options to fetch filter options using a request
+            optionsRequest: {
+                // String - identifier of the endpoint the request will be made to.
+                endpointId: 'example-adapter:foo',
+                // String - name of the field that functions as the identifier of the options.
+                idField: 'fooId',
+                // String - name of the field that functions as the visible name of the options.
+                nameField: 'fooName',
+            },
+            // [Object] (required if optionsRequest is not set) - selectable filter options
+            options: [
+                {
+                    // String - identifier of the filter option. This is the value that's sent along in the request
+                    id: 'foo',
+                    // name of the filter option that is shown in the ui
+                    name: 'foo',
+                },
+            ],
             // [Object] (optional) - operators that are supported by this filter
             operators: [
                 {
@@ -376,24 +394,6 @@ const fields = [
                         // Boolean - whether or not the filter can be negated, converting an "INCLUDES" to "NOT INCLUDES" etc.
                         negate: true,
                     },
-                    // Object (optional) - options to fetch filter options using a request
-                    optionsRequest: {
-                        // String - identifier of the endpoint the request will be made to.
-                        endpointId: 'example-adapter:foo',
-                        // String - name of the field that functions as the identifier of the options.
-                        idField: 'fooId',
-                        // String - name of the field that functions as the visible name of the options.
-                        nameField: 'fooName',
-                    },
-                    // [Object] (required if optionsRequest is not set) - selectable filter options
-                    options: [
-                        {
-                            // String - identifier of the filter option. This is the value that's sent along in the request
-                            id: 'foo',
-                            // name of the filter option that is shown in the ui
-                            name: 'foo',
-                        },
-                    ],
                 },
             ],
         },
@@ -484,4 +484,4 @@ async function connector({
         nextPage: 'http://example.com/page/3',
     };
 }
-```
+    ```
