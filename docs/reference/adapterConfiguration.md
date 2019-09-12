@@ -69,6 +69,10 @@ const adapter = {
             version: '2.0',
             // String - OAuth2 base site url
             base_site: 'https://oauth2.example.com',
+            // String (optional) - specify the access token path
+            access_token_path: '/token',
+            // String (optional) - OAuth2 authorize path
+            authorize_path: '/authorize',
             // [String] - OAuth2 scopes
             scopes: ['email'],
             // Object - environment variables
