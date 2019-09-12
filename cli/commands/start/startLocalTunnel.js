@@ -3,7 +3,11 @@ const localtunnel = require('localtunnel');
 
 async function startLocalTunnel(port) {
     const tunnel = await new Promise((resolve, reject) => {
-        localtunnel(port, (err, res) => {
+        const options = {
+            host: 'https://tunnel.swy.do',
+        };
+
+        localtunnel(port, options, (err, res) => {
             if (err) {
                 reject(err);
             } else {
@@ -16,7 +20,7 @@ async function startLocalTunnel(port) {
         debug('Tunnel closed unexpectedly');
     });
 
-    debug(tunnel.url);
+    debug(tunnel.url.replace('http://', 'https://'));
 }
 
 module.exports = {
