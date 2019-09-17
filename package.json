@@ -48,10 +48,12 @@
     "graphql-import": "0.7.1",
     "graphql-tools": "4.0.3",
     "graphql-type-json": "0.2.1",
+    "hwid": "0.1.1",
     "hygen": "4.0.9",
     "localtunnel": "1.9.2",
     "lodash": "4.17.15",
     "npm-registry-fetch": "4.0.0",
+    "prando": "5.1.1",
     "strip-ansi": "5.2.0",
     "supports-color": "7.0.0",
     "yargs": "13.3.0"
