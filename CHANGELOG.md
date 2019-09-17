@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/Swydo/custom-integrations/compare/0.12.2...0.13.0) (2019-09-17)
+
+
+### Features
+
+* **cli:** make tunnel URL predictable ([#38](https://github.com/Swydo/custom-integrations/issues/38)) ([2a53217](https://github.com/Swydo/custom-integrations/commit/2a53217))
+
+
+
 ### [0.12.2](https://github.com/Swydo/custom-integrations/compare/0.12.1...0.12.2) (2019-09-13)
 
 
