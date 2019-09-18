@@ -54,6 +54,7 @@
     "lodash": "4.17.15",
     "npm-registry-fetch": "4.0.0",
     "prando": "5.1.1",
+    "stacktracey": "1.2.117",
     "strip-ansi": "5.2.0",
     "supports-color": "7.0.0",
     "yargs": "13.3.0"
