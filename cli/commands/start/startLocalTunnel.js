@@ -3,7 +3,7 @@ const { getHWID } = require('hwid');
 const debug = require('debug')('custom-integrations:cli:start');
 const localtunnel = require('localtunnel');
 
-const TUNNEL_HOST = 'https://tunnel.swy.do';
+const TUNNEL_HOST = 'https://tun.swy.do';
 
 const SUBDOMAIN_CHARACTERS = 'bcdfghjklmnpqrstvwxyz0123456789';
 
