@@ -1,3 +1,4 @@
+const debounce = require('debounce');
 const Prando = require('prando');
 const { getHWID } = require('hwid');
 const debug = require('debug')('custom-integrations:cli:start');
@@ -31,12 +32,25 @@ async function startLocalTunnel(port) {
         });
     });
 
+    const reconnect = () => {
+        tunnel.close();
+
+        debug('Reconnecting');
+        startLocalTunnel(port);
+    };
+
+    const debouncedReconnect = debounce(reconnect, 1000);
+
     tunnel.on('url', (url) => {
         debug(url.replace('http://', 'https://'));
     });
 
+    tunnel.on('error', () => {
+        debouncedReconnect();
+    });
+
     tunnel.on('close', () => {
-        debug('Tunnel closed unexpectedly');
+        debug('Tunnel closed');
     });
 }
 
