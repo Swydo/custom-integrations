@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/Swydo/custom-integrations/compare/0.14.2...0.15.0) (2019-09-19)
+
+
+### Features
+
+* **cli:** add verbosity levels to CLI ([#42](https://github.com/Swydo/custom-integrations/issues/42)) ([c530867](https://github.com/Swydo/custom-integrations/commit/c530867))
+
+
+
 ### [0.14.2](https://github.com/Swydo/custom-integrations/compare/0.14.1...0.14.2) (2019-09-19)
 
 
