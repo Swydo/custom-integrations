@@ -1,8 +1,8 @@
 const debounce = require('debounce');
 const Prando = require('prando');
 const { getHWID } = require('hwid');
-const debug = require('debug')('custom-integrations:cli:start');
 const localtunnel = require('localtunnel');
+const logger = require('../../lib/logger')('cli:start');
 
 const TUNNEL_HOST = 'https://tun.swy.do';
 
@@ -35,14 +35,18 @@ async function startLocalTunnel(port) {
     const reconnect = () => {
         tunnel.close();
 
-        debug('Reconnecting');
+        logger.info('Reconnecting');
         startLocalTunnel(port);
     };
 
     const debouncedReconnect = debounce(reconnect, 1000);
 
     tunnel.on('url', (url) => {
-        debug(url.replace('http://', 'https://'));
+        logger.info(url.replace('http://', 'https://'));
+    });
+
+    tunnel.on('request', (req) => {
+        logger.http('%s %s', req.method, req.path);
     });
 
     tunnel.on('error', () => {
@@ -50,7 +54,7 @@ async function startLocalTunnel(port) {
     });
 
     tunnel.on('close', () => {
-        debug('Tunnel closed');
+        logger.info('Tunnel closed');
     });
 }
 

@@ -1,22 +1,17 @@
-const debug = require('debug');
+const winston = require('winston');
+const loggerConsoleTransport = require('./lib/loggerConsoleTransport');
 
-function handleGlobalOptions({ silent }) {
-    if (silent) {
-        debug.disable();
-    } else {
-        const namespaces = [
-            'custom-integrations:cli:*',
-        ];
+const DEFAULT_LEVEL = winston.config.npm.levels.info;
 
-        // Debug's `enable` overwrites the namespaces set in the environment, so take those into account manually.
-        const environmentNamespaces = process.env.DEBUG;
+const MAX_LEVEL = winston.config.npm.levels.silly;
 
-        if (environmentNamespaces) {
-            namespaces.push(environmentNamespaces);
-        }
+function handleGlobalOptions({ silent, verbose }) {
+    loggerConsoleTransport.silent = silent;
 
-        debug.enable(namespaces.join(','));
-    }
+    const levelValue = Math.min(verbose + DEFAULT_LEVEL, MAX_LEVEL);
+    loggerConsoleTransport.level = Object
+        .keys(winston.config.npm.levels)
+        .find(key => winston.config.npm.levels[key] === levelValue);
 }
 
 module.exports = {

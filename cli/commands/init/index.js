@@ -2,8 +2,8 @@ const path = require('path');
 const enquirer = require('enquirer');
 const execa = require('execa');
 const stripAnsi = require('strip-ansi');
-const debug = require('debug')('custom-integrations:cli:init');
 const { engine } = require('hygen');
+const logger = require('../../lib/logger')('cli:init');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
 const { getLatestCustomIntegrationsVersion } = require('./getLatestCustomIntegrationsVersion');
 
@@ -22,11 +22,11 @@ const builder = yargs => (
 const handler = async ({ ...globalOptions }) => {
     handleGlobalOptions(globalOptions);
 
-    debug('Fetching latest information from npm');
+    logger.info('Fetching latest information from npm');
 
     const customIntegrationsVersion = await getLatestCustomIntegrationsVersion();
 
-    debug(`Initializing with version ${customIntegrationsVersion}`);
+    logger.info(`Initializing with version ${customIntegrationsVersion}`);
 
     const response = await enquirer.prompt([{
         type: 'input',
@@ -78,7 +78,7 @@ const handler = async ({ ...globalOptions }) => {
         }),
     });
 
-    debug('All done, try running "npm install" to install all dependencies');
+    logger.info('All done, try running "npm install" to install all dependencies');
 };
 
 module.exports = {

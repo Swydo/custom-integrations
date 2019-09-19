@@ -26,19 +26,34 @@ List supported commands and options. You can run `help` for each sub command as 
 custom-integrations help
 ```
 
+### Global options
+
+#### Silent
+
+Disable non-critical logging. Errors and such will still be logged, such as when the `validate` command is used and
+it detects an issue with the configuration.
+
+`npx custom-integrations [command] -s`
+
+#### Verbose
+
+Increase the verbosity of logs. Available levels are "info" (default), "http", "verbose", "debug" and "silly", each
+additional `v` increases the verbosity level by one.
+
+`npx custom-integrations [command] -v[vvv]`
+
+### Start
+
+Start a local server. It's recommended you configure this command as your "start" script in your package.json file.
+
 Specify `--tunnel` to expose your integration to the internet so that you can hook it up to your Swydo development
 environment. You can also use a separate third-party tunnel, such as [ngrok](https://ngrok.com/)
 or [localtunnel](https://github.com/localtunnel/localtunnel) if you prefer.
 
-### Start
-
-Start a local server. This server can hook up to your Swydo development environment for testing. It's recommended
-you configure this command as your "start" script in your package.json file.
-
 ```bash
 custom-integrations start [options]
 ```
-omm
+
 ### Validate
 
 Validate your adapter configuration. Any configuration errors will be printed to the console.

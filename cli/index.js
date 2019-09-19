@@ -12,6 +12,11 @@ yargs
         type: 'boolean',
         default: false,
     })
+    .option('verbose', {
+        alias: 'v',
+        type: 'count',
+        default: false,
+    })
     .command(initCommand)
     .command(startCommand)
     .command(validateCommand)

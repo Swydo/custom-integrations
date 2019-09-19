@@ -1,8 +1,8 @@
 const chokidar = require('chokidar');
 const debounce = require('debounce');
-const debug = require('debug')('custom-integrations:cli:validate');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
 const { validateConfig } = require('./validateConfig');
+const logger = require('../../lib/logger')('cli:validate');
 
 const command = 'validate';
 const desc = 'validate configuration';
@@ -17,15 +17,15 @@ const handler = async ({ watch, ...globalOptions }) => {
     handleGlobalOptions(globalOptions);
 
     const validate = async () => {
-        debug('Validating');
+        logger.info('Validating');
         const isValid = await validateConfig();
-        debug('Done');
+        logger.info('Done');
 
         return isValid;
     };
 
     if (watch) {
-        debug('Watching for file changes');
+        logger.info('Watching for file changes');
 
         const debouncedValidate = debounce(validate, 500);
 

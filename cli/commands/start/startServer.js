@@ -1,8 +1,8 @@
 const express = require('express');
 const { invokeHandler } = require('@swydo/byol');
 const StackTracey = require('stacktracey');
-const debug = require('debug')('custom-integrations:cli:start');
 const { getMainPath } = require('../../lib/getMainPath');
+const logger = require('../../lib/logger')('cli:start');
 
 StackTracey.isThirdParty.include(path => path.includes('/custom-integrations/'));
 
@@ -10,18 +10,12 @@ function logGraphqlErrors(errors) {
     errors.forEach((error) => {
         const stack = new StackTracey(error.extensions.exception.stacktrace.join('\n'));
 
-        /* eslint-disable no-console */
-        if (debug.enabled) {
-            console.log('');
-        }
+        logger.error('');
 
-        console.error(`  ${error.message}`);
-        stack.clean.pretty.split('\n').forEach(line => console.error(`  ${line}`));
+        logger.error(`  ${error.message}`);
+        stack.clean.pretty.split('\n').forEach(line => logger.error(`  ${line}`));
 
-        if (debug.enabled) {
-            console.log('');
-        }
-        /* eslint-enable no-console */
+        logger.error('');
     });
 }
 
@@ -67,7 +61,7 @@ function startServer(port) {
 
     app.listen(port);
 
-    debug('Listening on port', port);
+    logger.info('Listening on port %d', port);
 }
 
 module.exports = {
