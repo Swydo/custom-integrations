@@ -31,16 +31,19 @@ Swydo custom integrations enables any online platform to connect to Swydo. Join 
 To get started with building custom integrations for the Swydo platform we recommend going through the following steps
 to get accustomed to the terminology and workflow.
 
-- [Build and test a Hello World integration](docs/guides/helloWorld.md).
+-   [Build and test a Hello World integration](docs/guides/helloWorld.md).
 
 **Next:** Adapt and connect your data.
 
-- Have a look at the [Star Wars custom integration](https://github.com/Swydo/star-wars-integration).
+-   Have a look at the [Star Wars custom integration](https://github.com/Swydo/star-wars-integration).
+-   Read our [tips and tricks](docs/guides/tipsAndTricks.md).
+-   Be inspired and explore our [common fields](docs/guides/commonFields.md).
+-   Learn all about data [scopes](docs/guides/scopes.md).
 
 **References:** Detailed references to explore all possibilities.
 
-- [Adapter configuration specification](docs/reference/adapterConfiguration.md)
-- [CLI commands](docs/reference/cli.md)
+-   [Adapter configuration specification](docs/reference/adapterConfiguration.md)
+-   [CLI commands](docs/reference/cli.md)
 
 ## Quick start
 
@@ -53,10 +56,12 @@ npm install @swydo/custom-integrations
 ```
 
 ### Create your adapter configuration
+
 Have a look at the [Adapter configuration specification](docs/reference/adapterConfiguration.md) for all options and possibilities.
 
 `src/adapter.js`
-```js
+
+```javascript
 const adapter = {
     id: 'my-custom-integration',
     authentication: {
@@ -68,13 +73,15 @@ const adapter = {
 };
 
 module.exports = {
-    adapter
+    adapter,
 };
 ```
 
 ### Export your custom integration
+
 `src/index.js`
-```js
+
+```javascript
 const { buildCustomIntegration } = require('@swydo/custom-integrations');
 const config = require('./adapter');
 
@@ -88,6 +95,7 @@ module.exports = {
 Your module defines the file the custom integration is exported from (the entrypoint) as "main" in your package.json file.
 
 `package.json`
+
 ```json
 {
     "name": "my-swydo-integration",

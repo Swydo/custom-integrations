@@ -2,11 +2,23 @@
 
 Reference guide of all available configuration options.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Configuration](#configuration)
+  - [adapter](#adapter)
+  - [endpoints](#endpoints)
+  - [fields](#fields)
+  - [connector](#connector)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Configuration
 
 Custom integrations are designed to accept a configuration that contains an `adapter`.
 
-```js
+```javascript
 const config = {
     // adapter specification
     adapter,
@@ -17,7 +29,7 @@ const config = {
 
 An `adapter` is a container for a set of different endpoints that defines authentication, rate limits and scopes.
 
-```js
+```javascript
 const adapter = {
     // String - identifier, must be kebab case e.g. foo-bar
     id: 'foo',
@@ -111,7 +123,7 @@ const adapter = {
             requests: 1,
             // [String] (optional) - entity the rate limit applies to
             per: ['endpoint' | 'user'],
-        }
+        },
     ],
     // [Object] - endpoint specification, configuration for each api endpoint
     endpoints,
@@ -122,7 +134,7 @@ const adapter = {
 
 An API endpoint configuration is stored in an adapter's endpoint.
 
-```js
+```javascript
 const endpoints = [
     {
         // String - identifier
@@ -202,7 +214,7 @@ const endpoints = [
 
 Fields contains the definitions of external or internal metrics or dimensions.
 
-```js
+```javascript
 const fields = [
     {
         // String - identifier
@@ -365,7 +377,7 @@ const fields = [
             requestKey: 'foo',
             // Object (optional) - options to fetch filter options using a request
             optionsRequest: {
-                // String - identifier of the endpoint the request will be made to.
+                // String (optional) - identifier of the endpoint the request will be made to. Defaults to the current endpoint.
                 endpointId: 'example-adapter:foo',
                 // String - name of the field that functions as the identifier of the options.
                 idField: 'fooId',
@@ -407,7 +419,7 @@ const fields = [
 
 A connector is a function/promise that's responsible for formatting the input options to an external request and the response of the external request to the custom integration format.
 
-```js
+```javascript
 async function connector({
     // [String] - the requested metrics
     metrics: ['bar'],
@@ -484,4 +496,4 @@ async function connector({
         nextPage: 'http://example.com/page/3',
     };
 }
-    ```
+```

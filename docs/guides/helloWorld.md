@@ -2,12 +2,26 @@
 
 Build a Hello World integration from scratch
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Goals and expectations](#goals-and-expectations)
+- [Initialize the project](#initialize-the-project)
+- [Default configuration](#default-configuration)
+- [A Hello World connector](#a-hello-world-connector)
+- [Defining fields](#defining-fields)
+- [Testing the integration](#testing-the-integration)
+- [Next](#next)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Goals and expectations
 
-- Build a simple integration using static data.
-- Understand what dimensions and metrics are.
-- Validate your custom integration configuration.
-- Connect your local environment to Swydo for testing.
+-   Build a simple integration using static data.
+-   Understand what dimensions and metrics are.
+-   Validate your custom integration configuration.
+-   Connect your local environment to Swydo for testing.
 
 ### Initialize the project
 
@@ -46,7 +60,9 @@ as well as `authentication` and `endpoints.
 ```javascript
 const adapter = {
     id: 'swydo-hello-world',
-    authentication: { /* OAuth 1, OAuth 2 or a form can be defined here */ },
+    authentication: {
+        /* OAuth 1, OAuth 2 or a form can be defined here */
+    },
     endpoints,
 };
 ```
@@ -56,8 +72,7 @@ The adapter tells Swydo how to authenticate, this can be through OAuth 1 or 2 as
 when we get to the `connector`. For now let's look at the endpoints.
 
 ```javascript
-const fields = [
-];
+const fields = [];
 
 const endpoints = [
     {
@@ -100,12 +115,12 @@ async function connector(requestOptions) {
         },
         {
             word: 'world',
-            length: 5
+            length: 5,
         },
         {
             word: '!',
             length: 1,
-        }
+        },
     ];
 
     return { rows };
@@ -113,9 +128,10 @@ async function connector(requestOptions) {
 ```
 
 Our fictional API now returns two rows. Each row has three properties:
-- `word`, just a string, part of the sentence "hello world!.
-- `position`, a number that represents the position of the word in a sentence.
-- `length`, another number that is the total length of that word.
+
+-   `word`, just a string, part of the sentence "hello world!.
+-   `position`, a number that represents the position of the word in a sentence.
+-   `length`, another number that is the total length of that word.
 
 ### Defining fields
 
@@ -124,9 +140,9 @@ can select these and display their values in widgets and KPIs. When defining fie
 are going to use the data, how they want it to be shown in widgets. Let's assume that, after talking with stakeholders,
 we can narrow things down to a few use cases.
 
-- I want to be able to show all words with their length.
-- I want to be able to show the total length of all words.
-- I want to be able to show which words have the same length
+-   I want to be able to show all words with their length.
+-   I want to be able to show the total length of all words.
+-   I want to be able to show which words have the same length
 
 To fulfil the first request we have to define a "dimension". A dimension defines how the data is grouped, in this case
 "per word" is what our users want.
@@ -146,10 +162,7 @@ const lengthField = {
     isMetric: true,
 };
 
-const fields = [
-    wordField,
-    lengthField,
-];
+const fields = [wordField, lengthField];
 ```
 
 Users can now create a table that shows _the length of each word, per word`_. Swydo will automatically detect each
@@ -170,7 +183,7 @@ const lengthField = {
     id: 'length',
     name: 'Length',
     type: 'Number',
-    aggregate: 'sum'
+    aggregate: 'sum',
 };
 ```
 
@@ -200,10 +213,7 @@ const lengthField = {
     isMetric: true,
 };
 
-const fields = [
-    wordField,
-    lengthField,
-];
+const fields = [wordField, lengthField];
 ```
 
 When the user chooses "length" as the dimension Swydo will detect all unique values of "length" and combine the values
@@ -235,10 +245,7 @@ const lengthField = {
     isMetric: true,
 };
 
-const fields = [
-    wordField,
-    lengthField,
-];
+const fields = [wordField, lengthField];
 
 const endpoints = [
     {
@@ -276,7 +283,6 @@ const adapter = {
 module.exports = {
     adapter,
 };
-
 ```
 
 ### Testing the integration
@@ -284,8 +290,8 @@ module.exports = {
 We've been writing configuration for a while now, so let's see if things are going according to plan. The `init` command
 provided us with some useful scripts:
 
-- `npm run validate` which validates the configuration. Any errors will be shown.
-- `npm start` start a server that Swydo can connect to.
+-   `npm run validate` which validates the configuration. Any errors will be shown.
+-   `npm start` start a server that Swydo can connect to.
 
 Try running `npm run validate` to check if your configuration is OK. Try removing a property from one of the fields
 before running it again to see how errors are reported.
@@ -300,13 +306,13 @@ be greeted with, among other things, a green dot and the word "Connected". Swydo
 
 Now lets try it out. Head over to the reporting section by using the side menu and create a new report.
 
-- Click create new widget.
-- Select your development environment from the list of providers.
-- Connect a new account.
-- Run through the steps and save the data source.
-- Select the only available endpoint (endpoints are displayed as categories to end users).
-- Fill out the settings, select an combination of metrics and dimensions.
-- Click save.
+-   Click create new widget.
+-   Select your development environment from the list of providers.
+-   Connect a new account.
+-   Run through the steps and save the data source.
+-   Select the only available endpoint (endpoints are displayed as categories to end users).
+-   Fill out the settings, select an combination of metrics and dimensions.
+-   Click save.
 
 After a short while the widget will load with the data you selected. At this point you might want to dive into the
 `connector` function. Try placing a `console.log("Hello World!")` somewhere in the body of the function and refresh the
@@ -314,9 +320,9 @@ page. You'll see the message printed on your command line.
 
 ### Next
 
-- Learn about common patterns and use cases.
-- Read up on the reference documentation.
-  - [Adapter configuration specification](../reference/adapterConfiguration.md)
-  - [CLI commands](../reference/cli.md)
-- Have a look at the [Star Wars custom integration](https://github.com/Swydo/star-wars-integration).
-- [Join us on Gitter](https://gitter.im/Swydo/custom-integrations) for any questions.
+-   Learn about common patterns and use cases.
+-   Read up on the reference documentation.
+    -   [Adapter configuration specification](../reference/adapterConfiguration.md)
+    -   [CLI commands](../reference/cli.md)
+-   Have a look at the [Star Wars custom integration](https://github.com/Swydo/star-wars-integration).
+-   [Join us on Gitter](https://gitter.im/Swydo/custom-integrations) for any questions.

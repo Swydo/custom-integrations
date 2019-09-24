@@ -1,9 +1,26 @@
 ## CLI Reference
 
-The commands below can be configured as script in your package.json or run standalone with the help 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Running these commands](#running-these-commands)
+- [Help](#help)
+- [Global options](#global-options)
+  - [Silent](#silent)
+  - [Verbose](#verbose)
+- [Start](#start)
+- [Validate](#validate)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+### Running these commands
+
+The commands below can be configured as script in your package.json or run standalone with the help
 of [npx](https://www.npmjs.com/package/npx), which shipswith supported Node.js versions by default.
 
 As script in your package.json:
+
 ```
 {
     // ...
@@ -14,8 +31,9 @@ As script in your package.json:
 ```
 
 In your terminal or command prompt:
+
 ```
-npx custom-integrations start
+npx @swydo/custom-integrations start
 ```
 
 ### Help
@@ -33,14 +51,14 @@ custom-integrations help
 Disable non-critical logging. Errors and such will still be logged, such as when the `validate` command is used and
 it detects an issue with the configuration.
 
-`npx custom-integrations [command] -s`
+`npx @swydo/custom-integrations [command] -s`
 
 #### Verbose
 
 Increase the verbosity of logs. Available levels are "info" (default), "http", "verbose", "debug" and "silly", each
 additional `v` increases the verbosity level by one.
 
-`npx custom-integrations [command] -v[vvv]`
+`npx @swydo/custom-integrations [command] -v[vvv]`
 
 ### Start
 
