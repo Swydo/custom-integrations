@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.2](https://github.com/Swydo/custom-integrations/compare/0.15.1...0.15.2) (2019-09-25)
+
+
+### Tests
+
+* **cli:** add test for CLI ([#44](https://github.com/Swydo/custom-integrations/issues/44)) ([2f9636a](https://github.com/Swydo/custom-integrations/commit/2f9636a))
+
+
+
 ### [0.15.1](https://github.com/Swydo/custom-integrations/compare/0.15.0...0.15.1) (2019-09-24)
 
 
