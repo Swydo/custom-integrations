@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const chokidar = require('chokidar');
 const debounce = require('debounce');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');

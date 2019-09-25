@@ -1,10 +1,12 @@
 const express = require('express');
-const { invokeHandler } = require('@swydo/byol');
+const byol = require('@swydo/byol'); // The function invokeHandler is not destructured to allow stubbing.
 const StackTracey = require('stacktracey');
 const { getMainPath } = require('../../lib/getMainPath');
 const logger = require('../../lib/logger')('cli:start');
 
 StackTracey.isThirdParty.include(path => path.includes('/custom-integrations/'));
+
+let server;
 
 function logGraphqlErrors(errors) {
     errors.forEach((error) => {
@@ -19,7 +21,11 @@ function logGraphqlErrors(errors) {
     });
 }
 
-function startServer(port) {
+function lambdaServer(port) {
+    if (server) {
+        return;
+    }
+
     const app = express();
 
     app.post('/', (req, res) => {
@@ -39,7 +45,7 @@ function startServer(port) {
                 handlerName: 'customIntegration',
             };
 
-            invokeHandler(invokeOptions)
+            byol.invokeHandler(invokeOptions)
                 .then((result) => {
                     if (result && result.errors) {
                         logGraphqlErrors(result.errors);
@@ -59,11 +65,19 @@ function startServer(port) {
         res.end();
     });
 
-    app.listen(port);
+    server = app.listen(port);
 
     logger.info('Listening on port %d', port);
 }
 
+function stopServer() {
+    if (server) {
+        server.close();
+        server = null;
+    }
+}
+
 module.exports = {
-    startServer,
+    startServer: lambdaServer,
+    stopServer,
 };

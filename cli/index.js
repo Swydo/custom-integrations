@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* istanbul ignore file */
+
 const yargs = require('yargs');
 const initCommand = require('./commands/init');
 const startCommand = require('./commands/start');

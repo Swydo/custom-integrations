@@ -1,6 +1,8 @@
+/* istanbul ignore file */
+
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
-const { startServer } = require('./startServer');
-const { startLocalTunnel } = require('./startLocalTunnel');
+const { startServer } = require('./lambdaServer');
+const { openLocalTunnel } = require('./localTunnel');
 
 const command = 'start';
 const desc = 'Start a local server';
@@ -17,7 +19,7 @@ const handler = async ({ port, tunnel, ...globalOptions }) => {
     startServer(port);
 
     if (tunnel) {
-        await startLocalTunnel(port);
+        await openLocalTunnel(port);
     }
 };
 

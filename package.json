@@ -14,7 +14,7 @@
     "coverage-report": "nyc report",
     "coverage-check": "nyc check-coverage",
     "eslint": "eslint ./src ./cli",
-    "mocha": "npx nyc --silent mocha \"src/**/*.spec.js\" --exit",
+    "mocha": "npx nyc --silent mocha \"src/**/*.spec.js\" \"cli/**/*.spec.js\" --exit",
     "release": "standard-version",
     "test": "npm run eslint && npm run mocha && npm run coverage-report && npm run coverage-check",
     "cli": "node cli/index.js",
@@ -63,6 +63,7 @@
   "devDependencies": {
     "can-npm-publish": "1.3.1",
     "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
     "doctoc": "1.4.0",
     "eslint": "6.2.2",
     "eslint-config-airbnb-base": "14.0.0",
@@ -71,6 +72,9 @@
     "mocha": "5.2.0",
     "nock": "10.0.2",
     "nyc": "14.1.1",
+    "request": "2.88.0",
+    "request-promise-native": "1.0.7",
+    "sinon": "7.5.0",
     "standard-version": "6.0.1"
   }
 }

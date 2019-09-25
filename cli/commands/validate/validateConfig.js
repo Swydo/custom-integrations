@@ -1,9 +1,10 @@
-const { invokeHandler } = require('@swydo/byol');
+const byol = require('@swydo/byol'); // The function invokeHandler is not destructured to allow stubbing.
 const { getMainPath } = require('../../lib/getMainPath');
 
-async function validateConfig() {
+function getInvokeOptions() {
     const absoluteIndexPath = getMainPath();
-    const invokeOptions = {
+
+    return {
         absoluteIndexPath,
         handlerName: 'customIntegration',
         event: {
@@ -17,6 +18,10 @@ async function validateConfig() {
             variables: {},
         },
     };
+}
+
+async function validateConfig() {
+    const invokeOptions = getInvokeOptions();
 
     try {
         const {
@@ -25,7 +30,7 @@ async function validateConfig() {
                     isValid,
                 },
             },
-        } = await invokeHandler(invokeOptions);
+        } = await byol.invokeHandler(invokeOptions);
 
         return isValid;
     } catch (e) {
@@ -35,5 +40,6 @@ async function validateConfig() {
 }
 
 module.exports = {
+    getInvokeOptions,
     validateConfig,
 };

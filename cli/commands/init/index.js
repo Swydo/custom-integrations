@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const path = require('path');
 const enquirer = require('enquirer');
 const execa = require('execa');

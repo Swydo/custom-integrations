@@ -5,7 +5,7 @@ const DEFAULT_LEVEL = winston.config.npm.levels.info;
 
 const MAX_LEVEL = winston.config.npm.levels.silly;
 
-function handleGlobalOptions({ silent, verbose }) {
+function handleGlobalOptions({ silent = false, verbose = 0 }) {
     loggerConsoleTransport.silent = silent;
 
     const levelValue = Math.min(verbose + DEFAULT_LEVEL, MAX_LEVEL);

@@ -5,9 +5,11 @@
   "functions": 100,
   "branches": 100,
   "exclude": [
-    "**/src/**/*.spec.js"
+    "**/src/**/*.spec.js",
+    "**/cli/**/*.spec.js"
   ],
   "include": [
-    "**/src/**/*.js"
+    "**/src/**/*.js",
+    "**/cli/**/*.js"
   ]
 }
