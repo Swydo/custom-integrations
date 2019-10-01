@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.3](https://github.com/Swydo/custom-integrations/compare/0.16.2...0.16.3) (2019-10-01)
+
+
+### Bug Fixes
+
+* fix not awaiting an async connector ([#48](https://github.com/Swydo/custom-integrations/issues/48)) ([460c6c1](https://github.com/Swydo/custom-integrations/commit/460c6c1))
+
+
+
 ### [0.16.2](https://github.com/Swydo/custom-integrations/compare/0.16.1...0.16.2) (2019-10-01)
 
 
