@@ -258,7 +258,7 @@ const fields = [
                 'minuteOfHour' | // format: 'mm'
                 'dayOfWeek' | // format: 'e'
                 'hour' | // format: 'YYYY-MM-DD HH'
-                'week' | // format: 'YYYY-MM-DD HH'
+                'week' | // format: 'ggggww'
                 'isoYear' | // format: 'GGGG'
                 'isoWeek' | // format: 'GGGGWW'
                 'dayOfMonth' | // format: 'DD'
