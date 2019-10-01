@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://github.com/Swydo/custom-integrations/compare/0.15.2...0.16.0) (2019-10-01)
+
+
+### Features
+
+* remove fields that weren't requested from rows and totals returned by connector ([#46](https://github.com/Swydo/custom-integrations/issues/46)) ([278d6dc](https://github.com/Swydo/custom-integrations/commit/278d6dc))
+
+
+
 ### [0.15.2](https://github.com/Swydo/custom-integrations/compare/0.15.1...0.15.2) (2019-09-25)
 
 
