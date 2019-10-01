@@ -92,19 +92,151 @@ describe('resolvers', function () {
 
     describe('Endpoint resolvers', function () {
         describe('#data', function () {
-            it('returns the data for an endpoint', function () {
-                const value = 'foo';
+            it('returns the data for an endpoint', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
+                const endpoint = {
+                    connector: () => result,
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
+            });
+
+            it('returns defaults when the connector did not return anything', async function () {
+                const endpoint = {
+                    connector: () => {
+                    },
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.have.property('rows').that.is.an('array').with.length(0);
+                expect(resolverOutput).to.have.property('totals').that.is.an('object').with.property('foo', undefined);
+                expect(resolverOutput).to.have.property('totalPages', undefined);
+                expect(resolverOutput).to.have.property('resultCount', undefined);
+                expect(resolverOutput).to.have.property('nextPage', undefined);
+            });
+
+            it('removes unsupported properties from the returned object', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
+                const endpoint = {
+                    connector: () => ({ ...result, foo: 'foo' }),
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
+            });
+
+            it('removes fields that weren\'t requested from rows and totals', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
                 const endpoint = {
                     connector: () => ({
-                        value,
+                        ...result,
+                        rows: [{
+                            ...result.rows[0],
+                            bar: 'bar',
+                        }],
+                        totals: {
+                            ...result.totals,
+                            bar: 'bar',
+                        },
                     }),
                 };
 
                 const resolver = resolvers.Endpoint.data;
-                const result = resolver(endpoint, {});
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
 
-                expect(result).to.exist;
-                expect(result).to.deep.equal({ value });
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
+            });
+
+            it('supports requests without metrics', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
+                const endpoint = {
+                    connector: () => result,
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
+            });
+
+            it('supports requests without dimensions', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
+                const endpoint = {
+                    connector: () => result,
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { metrics: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
             });
         });
     });

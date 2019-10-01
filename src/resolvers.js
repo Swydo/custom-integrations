@@ -1,6 +1,7 @@
 const GraphQLJSON = require('graphql-type-json');
 const packageJSON = require('../package.json');
 const { validateConfig } = require('./configSchema');
+const { createRowProjector } = require('./createRowProjector');
 
 const resolvers = {
     JSON: GraphQLJSON,
@@ -17,7 +18,29 @@ const resolvers = {
         endpoint: ({ endpoints }, { id }) => endpoints.find(endpoint => endpoint.id === id),
     },
     Endpoint: {
-        data: ({ connector }, { request }) => connector(request),
+        data: async ({ connector }, { request }) => {
+            const {
+                rows = [],
+                totals = {},
+                totalPages,
+                resultCount,
+                nextPage,
+            } = connector(request) || {};
+
+            const { metrics = [], dimensions = [] } = request;
+            const rowProjector = createRowProjector([...metrics, ...dimensions]);
+
+            const projectedRows = rows.map(rowProjector);
+            const projectedTotals = rowProjector(totals);
+
+            return {
+                rows: projectedRows,
+                totals: projectedTotals,
+                totalPages,
+                resultCount,
+                nextPage,
+            };
+        },
     },
     Config: {
         isValid: (config) => {
