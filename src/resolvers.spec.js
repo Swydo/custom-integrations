@@ -116,6 +116,30 @@ describe('resolvers', function () {
                 expect(resolverOutput).to.deep.equal(result);
             });
 
+            it('resolves an async connector', async function () {
+                const result = {
+                    rows: [{
+                        foo: 'foo',
+                    }],
+                    totals: {
+                        foo: 'foo',
+                    },
+                    resultCount: 20,
+                    totalPages: 2,
+                    nextPage: 'http://example.com?page=2',
+                };
+
+                const endpoint = {
+                    connector: async () => result,
+                };
+
+                const resolver = resolvers.Endpoint.data;
+                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
+
+                expect(resolverOutput).to.exist;
+                expect(resolverOutput).to.deep.equal(result);
+            });
+
             it('returns defaults when the connector did not return anything', async function () {
                 const endpoint = {
                     connector: () => {

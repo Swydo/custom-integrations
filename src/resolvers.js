@@ -25,7 +25,7 @@ const resolvers = {
                 totalPages,
                 resultCount,
                 nextPage,
-            } = connector(request) || {};
+            } = await connector(request) || {};
 
             const { metrics = [], dimensions = [] } = request;
             const rowProjector = createRowProjector([...metrics, ...dimensions]);
