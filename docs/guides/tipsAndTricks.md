@@ -344,7 +344,7 @@ my-custom-integrations/
         │   │   ├── endpoint.js       // This contains the endpoint configuration.
         │   │   ├── fields.js          // This contains the fields configuration for that endpoint.
         │   │   └── connector.js      // This contains the endpoint's connector.
-        │   └── my-second-endpoint    // Directory containing all config for the first endpoint.
+        │   └── my-second-endpoint    // Directory containing all config for the second endpoint.
         │       └── ...               // Same structure as my-first-endpoint.
         ├── lib/                      // Directory containing generic/cross endpoint resources.
         │   ├── baseUrl.js            // This contains the API's base url that can be reused by connectors.
