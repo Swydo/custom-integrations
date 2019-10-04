@@ -725,7 +725,7 @@ const baseField = {
 const field = cloneDeep(baseField);
 field.properties.subFields = {
     type: 'array',
-    itmes: baseField,
+    items: baseField,
 };
 
 const endpointScope = {
