@@ -10,6 +10,7 @@ type ScopeOptionsRequest {
     endpointId: String
     valueField: String
     nameField: String
+    metaFields: [String]
 }
 
 type ScopePart {
