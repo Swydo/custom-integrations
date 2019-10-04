@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.6](https://github.com/Swydo/custom-integrations/compare/0.16.5...0.16.6) (2019-10-04)
+
+
+### Bug Fixes
+
+* fix field schema ([fb94423](https://github.com/Swydo/custom-integrations/commit/fb94423))
+
+
+
 ### [0.16.5](https://github.com/Swydo/custom-integrations/compare/0.16.4...0.16.5) (2019-10-04)
 
 
