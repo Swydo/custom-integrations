@@ -23,6 +23,14 @@ Build a Hello World integration from scratch
 -   Validate your custom integration configuration.
 -   Connect your local environment to Swydo for testing.
 
+### Requirements
+
+We recommend having some programming experience. Assuming you have the basics covered you could come a long way by
+looking at the examples we've made and generally just messing about.
+
+Besides that you'll need a supported version of Node.js installed. Many of us use `nvm` to install node, but you can
+also just grab an installer from the [Node.js website](https://nodejs.org/en/download/).
+
 ### Initialize the project
 
 Create your project directory and initialize. You could use `swydo-hello-world` as the identifier when prompted.
@@ -76,14 +84,14 @@ const fields = [];
 
 const endpoints = [
     {
-        id: 'swydo-hello-world-endpoint',
+        id: 'first-endpoint',
         connector: connector,
         fields,
     },
 ];
 ```
 
-Again the `init` script provided us with a default here. An endpoint with the identifier "swydo-hello-world-endpoint".
+Again the `init` script provided us with a default here. An endpoint with the identifier "first-endpoint".
 Each endpoint has a `connector`, which is a JavaScript function that is going to handle requests for data by the user.
 Finally `fields` define all available dimensions, metrics and filters in an endpoint. The `init` command didn't
 create any fields for us,but we'll get back to those.
@@ -98,7 +106,7 @@ async function connector(requestOptions) {
 }
 ```
 
-Th connector doesn't do anything yet, but we can already see that we're supposed to return an object containing an
+The connector doesn't do anything yet, but we can already see that we're supposed to return an object containing an
 array of rows. Each `endpoint` can have its own `connector`, but for the purpose of this integration a single one
 suffices.
 
@@ -125,9 +133,13 @@ async function connector(requestOptions) {
 
     return { rows };
 }
+
+module.exports = {
+    connector,
+};
 ```
 
-Our fictional API now returns two rows. Each row has three properties:
+Our fictional API now returns three rows. Each row has two properties:
 
 -   `word`, just a string, part of the sentence "hello world!.
 -   `position`, a number that represents the position of the word in a sentence.
@@ -147,6 +159,9 @@ we can narrow things down to a few use cases.
 To fulfil the first request we have to define a "dimension". A dimension defines how the data is grouped, in this case
 "per word" is what our users want.
 
+You can copy these fields to your `adapter.js` file. You'll notice the `init` command created an empty fields array.
+You can replace that array with the code below.
+
 ```javascript
 const wordField = {
     id: 'word',
@@ -165,8 +180,8 @@ const lengthField = {
 const fields = [wordField, lengthField];
 ```
 
-Users can now create a table that shows _the length of each word, per word`_. Swydo will automatically detect each
-unique "word" in our response and show it along with "length".
+With these fields added users can create a table that shows _the length of each word, per word`_. Swydo will
+automatically detect each unique "word" in our connector's response and show it along with "length".
 
 | Word | Length |
 | --- | --- |
@@ -201,6 +216,7 @@ facilitate this we can allow users to select the "word" a and "length" fields as
 ```javascript
 const wordField = {
     id: 'word',
+    name: 'Word',
     type: 'String',
     isDimension: true,
     isMetric: true,
@@ -208,6 +224,7 @@ const wordField = {
 
 const lengthField = {
     id: 'length',
+    name: 'Length',
     type: 'Number',
     isDimension: true,
     isMetric: true,
@@ -311,7 +328,7 @@ Now lets try it out. Head over to the reporting section by using the side menu a
 -   Connect a new account.
 -   Run through the steps and save the data source.
 -   Select the only available endpoint (endpoints are displayed as categories to end users).
--   Fill out the settings, select an combination of metrics and dimensions.
+-   Fill out the settings, select a combination of metrics and dimensions.
 -   Click save.
 
 After a short while the widget will load with the data you selected. At this point you might want to dive into the

@@ -106,8 +106,8 @@ const adapter = {
                 optionsRequest: {
                     // String - identifier of the endpoint the request will be made to.
                     endpointId: 'example-adapter:foo',
-                    // String - name of the field that functions as the identifier of the options.
-                    idField: 'fooId',
+                    // String - value of the scope item. You'll be able to use this in your connector.
+                    valueField: 'fooId',
                     // String - name of the field that functions as the visible name of the options.
                     nameField: 'fooName',
                 },
@@ -140,7 +140,7 @@ const endpoints = [
         // String - identifier
         id: 'foo',
         // String - endpoint name as it a appears in the gui
-        name: 'Foo'
+        name: 'Foo',
         // Boolean (optional) - indicates whether the endpoint is selectable in the gui
         isSelectable: true, // default true
         // String (optional) - category name as it a appears in the gui where fields from this endpoint belong to

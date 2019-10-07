@@ -63,7 +63,7 @@ const scope = {
             key: 'client_id',
             optionsRequest: {
                 endpointId: 'example-adapter:scopes',
-                idField: 'clientId',
+                valueField: 'clientId',
                 nameField: 'clientName',
             },
         },
@@ -103,6 +103,11 @@ const endpoint = {
     name: 'Scopes',
     isSelectable: false, // Scope endpoints are not supposed to be selectable by the user to retrieve data from.
     dateRange: {
+        enabled: false,
+        required: false,
+    },
+    connector: scopesConnector,
+    scope: {
         enabled: false,
         required: false,
     },
