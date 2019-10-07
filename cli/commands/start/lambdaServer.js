@@ -53,7 +53,11 @@ function lambdaServer(port) {
 
                     res.send(result);
                 })
-                .catch(() => {
+                .catch((error) => {
+                    logger.error('');
+                    logger.error(`  ${error.message}`);
+                    logger.error('');
+
                     res.status(500);
                     res.end();
                 });
