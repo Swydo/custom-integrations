@@ -2,6 +2,7 @@ const cloneDeep = require('lodash/cloneDeep');
 const { compileSchema, getCustomError } = require('./schemaHelpers');
 
 const SCHEMA_KEY = 'Config';
+const KEBAB_CASE_PATTERN = '^[a-z0-9]+[a-z0-9-]*[a-z0-9]+$';
 
 const FILTER_OPERATOR_TYPES = {
     CONTAINS: {
@@ -755,6 +756,7 @@ const endpoint = {
     properties: {
         id: {
             type: 'string',
+            pattern: KEBAB_CASE_PATTERN,
         },
         name: {
             type: 'string',
@@ -808,6 +810,7 @@ const configSchema = {
             properties: {
                 id: {
                     type: 'string',
+                    pattern: KEBAB_CASE_PATTERN,
                 },
                 authentication,
                 scope,
