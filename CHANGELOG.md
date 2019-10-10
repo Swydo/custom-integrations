@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.11](https://github.com/Swydo/custom-integrations/compare/0.16.10...0.16.11) (2019-10-10)
+
+
+### Bug Fixes
+
+* validate adapter/endpoint id as kebab case ([#55](https://github.com/Swydo/custom-integrations/issues/55)) ([9231585](https://github.com/Swydo/custom-integrations/commit/9231585))
+
+
+
 ### [0.16.10](https://github.com/Swydo/custom-integrations/compare/0.16.9...0.16.10) (2019-10-07)
 
 
