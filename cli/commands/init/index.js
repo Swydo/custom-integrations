@@ -5,9 +5,9 @@ const enquirer = require('enquirer');
 const execa = require('execa');
 const stripAnsi = require('strip-ansi');
 const { engine } = require('hygen');
+const { getLatestCustomIntegrationsVersion } = require('../../lib/getLatestCustomIntegrationsVersion');
 const logger = require('../../lib/logger')('cli:init');
 const { handleGlobalOptions } = require('../../handleGlobalOptions');
-const { getLatestCustomIntegrationsVersion } = require('./getLatestCustomIntegrationsVersion');
 
 const KEBAB_CASE_REGEX = /^[a-z0-9]+[a-z0-9-]*[a-z0-9]+$/;
 

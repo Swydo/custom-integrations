@@ -19,6 +19,10 @@ yargs
         type: 'count',
         default: false,
     })
+    .option('version-check', {
+        type: 'boolean',
+        default: true,
+    })
     .command(initCommand)
     .command(startCommand)
     .command(validateCommand)

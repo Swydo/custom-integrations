@@ -46,6 +46,9 @@ custom-integrations help
 
 ### Global options
 
+Options available for all commands. Note that boolean options can be inverted by prefixing them with "no". For instance,
+`--silent` can be inverted/negated by `--no-silent`.
+
 #### Silent
 
 Disable non-critical logging. Errors and such will still be logged, such as when the `validate` command is used and
@@ -59,6 +62,14 @@ Increase the verbosity of logs. Available levels are "info" (default), "http", "
 additional `v` increases the verbosity level by one.
 
 `npx @swydo/custom-integrations [command] -v[vvv]`
+
+#### Version check
+
+Enable or disable a version check and update prompt on startup. Enabled by default. 
+
+`npx @swydo/custom-integrations [command] --version-check`
+
+`npx @swydo/custom-integrations [command] --no-version-checks`
 
 ### Start
 
