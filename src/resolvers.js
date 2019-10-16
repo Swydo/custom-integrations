@@ -20,22 +20,28 @@ const resolvers = {
     Endpoint: {
         data: async ({ connector }, { request }) => {
             const {
-                rows = [],
-                totals = {},
+                rows: rawRows = [],
+                totals: rawTotals = {},
                 totalPages,
                 resultCount,
                 nextPage,
             } = await connector(request) || {};
 
-            const { metrics = [], dimensions = [] } = request;
-            const rowProjector = createRowProjector([...metrics, ...dimensions]);
+            let rows;
+            let totals;
 
-            const projectedRows = rows.map(rowProjector);
-            const projectedTotals = rowProjector(totals);
+            if (request.projection) {
+                const rowProjector = createRowProjector(request.projection);
+                rows = rawRows.map(rowProjector);
+                totals = rowProjector(rawTotals);
+            } else {
+                rows = rawRows;
+                totals = rawTotals;
+            }
 
             return {
-                rows: projectedRows,
-                totals: projectedTotals,
+                rows,
+                totals,
                 totalPages,
                 resultCount,
                 nextPage,

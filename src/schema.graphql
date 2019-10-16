@@ -195,6 +195,7 @@ input DataInput {
     metrics: [String]
     dimensions: [String]
     filters: [FilterInput]
+    projection: [String]
     dateRange: DateRangeInput
     limits: [Int]
     credentials: JSON

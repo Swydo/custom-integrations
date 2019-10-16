@@ -151,7 +151,7 @@ describe('resolvers', function () {
 
                 expect(resolverOutput).to.exist;
                 expect(resolverOutput).to.have.property('rows').that.is.an('array').with.length(0);
-                expect(resolverOutput).to.have.property('totals').that.is.an('object').with.property('foo', undefined);
+                expect(resolverOutput).to.have.property('totals').that.is.an('object').that.is.empty;
                 expect(resolverOutput).to.have.property('totalPages', undefined);
                 expect(resolverOutput).to.have.property('resultCount', undefined);
                 expect(resolverOutput).to.have.property('nextPage', undefined);
@@ -209,7 +209,12 @@ describe('resolvers', function () {
                 };
 
                 const resolver = resolvers.Endpoint.data;
-                const resolverOutput = await resolver(endpoint, { request: { dimensions: ['foo'], metrics: ['foo'] } });
+                const request = {
+                    dimension: ['foo'],
+                    metrics: ['foo'],
+                    projection: ['foo'],
+                };
+                const resolverOutput = await resolver(endpoint, { request });
 
                 expect(resolverOutput).to.exist;
                 expect(resolverOutput).to.deep.equal(result);
