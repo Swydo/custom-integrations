@@ -262,6 +262,56 @@ describe('configSchema', function () {
         });
     });
 
+    describe('#fieldCompatibleWithCustomValidator', function () {
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
+        const customValidator = fieldSchema.properties.compatibleWith.custom;
+
+        it('validates when parent data does not have inCompatibleWith', function () {
+            const validateContext = {};
+            const _ = undefined;
+            const parentData = { };
+
+            const isValid = customValidator(validateContext, _, _, _, parentData);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('invalidates when parent data has inCompatibleWith', function () {
+            const validateContext = {};
+            const _ = undefined;
+            const parentData = { incompatibleWith: { } };
+
+            const isValid = customValidator(validateContext, _, _, _, parentData);
+
+            expect(isValid).to.be.false;
+        });
+    });
+
+    describe('#fieldIncompatibleWithCustomValidator', function () {
+        const fieldSchema = configSchema.properties.adapter.properties.endpoints.items.properties.fields.items;
+        const customValidator = fieldSchema.properties.incompatibleWith.custom;
+
+        it('validates when parent data does not have compatibleWith', function () {
+            const validateContext = {};
+            const _ = undefined;
+            const parentData = { };
+
+            const isValid = customValidator(validateContext, _, _, _, parentData);
+
+            expect(isValid).to.be.true;
+        });
+
+        it('invalidates when parent data has compatibleWith', function () {
+            const validateContext = {};
+            const _ = undefined;
+            const parentData = { compatibleWith: { } };
+
+            const isValid = customValidator(validateContext, _, _, _, parentData);
+
+            expect(isValid).to.be.false;
+        });
+    });
+
     describe('#endpointPartCustomValidator', function () {
         const customValidator = configSchema.properties.adapter.properties.endpoints.items.properties.connector.custom;
 

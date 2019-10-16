@@ -160,6 +160,8 @@ type Field {
     formula: String
     sort: Sort
     filter: Filter
+    compatibleWith: [String]
+    incompatibleWith: [String]
     subFields: [SubField]
 }
 

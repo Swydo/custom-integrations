@@ -720,6 +720,46 @@ const baseField = {
         identifierPath: {
             type: 'string',
         },
+        compatibleWith: {
+            type: 'array',
+            items: {
+                type: 'string',
+            },
+            custom(validateContext, data, parentSchema, dataPath, parentData) {
+                const hasIncompatibleWith = Boolean(parentData.incompatibleWith);
+
+                if (hasIncompatibleWith) {
+                    const errorMessage = 'cannot set compatibleWith in combination with incompatibleWith';
+
+                    // eslint-disable-next-line no-param-reassign
+                    validateContext.errors = getCustomError(errorMessage, 'compatibleWith');
+
+                    return false;
+                }
+
+                return true;
+            },
+        },
+        incompatibleWith: {
+            type: 'array',
+            items: {
+                type: 'string',
+            },
+            custom(validateContext, data, parentSchema, dataPath, parentData) {
+                const hasCompatibleWith = Boolean(parentData.compatibleWith);
+
+                if (hasCompatibleWith) {
+                    const errorMessage = 'cannot set incompatibleWith in combination with compatibleWith';
+
+                    // eslint-disable-next-line no-param-reassign
+                    validateContext.errors = getCustomError(errorMessage, 'incompatibleWith');
+
+                    return false;
+                }
+
+                return true;
+            },
+        },
     },
 };
 

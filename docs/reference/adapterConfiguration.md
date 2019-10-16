@@ -409,6 +409,10 @@ const fields = [
                 },
             ],
         },
+        // [String] (optional, can only be set if incompatibleWith is not set) - list of field ids that can be combined with this field, combinations with all other fields will be impossible
+        compatibleWith: ['foo'],
+        // [String] (optional, can only be set if compatibleWith is not set) - list of field ids that cannot be combined with this field, combinations with all other fields will be possible
+        incompatibleWith: ['foo'],
         // [Object] - subfields are field definitions that describe nested fields when field type is object
         subFields,
     },
