@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://github.com/Swydo/custom-integrations/compare/0.18.0...0.19.0) (2019-10-16)
+
+
+### Features
+
+* add (in)compatibleWith to field config ([#57](https://github.com/Swydo/custom-integrations/issues/57)) ([6540643](https://github.com/Swydo/custom-integrations/commit/6540643))
+
+
+
 ## [0.18.0](https://github.com/Swydo/custom-integrations/compare/0.17.0...0.18.0) (2019-10-16)
 
 
