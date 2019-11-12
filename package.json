@@ -1,6 +1,6 @@
 {
   "name": "@swydo/custom-integrations",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "description": "Custom integrations enable any online platform to be integrated with Swydo to use in your reports",
   "engines": {
     "node": "10"

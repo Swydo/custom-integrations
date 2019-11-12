@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.1](https://github.com/Swydo/custom-integrations/compare/0.19.0...0.19.1) (2019-11-12)
+
+
+### Bug Fixes
+
+* use Float type for maxLength in graphql schema ([#59](https://github.com/Swydo/custom-integrations/issues/59)) ([e725b3d](https://github.com/Swydo/custom-integrations/commit/e725b3d))
+
+
+
 ## [0.19.0](https://github.com/Swydo/custom-integrations/compare/0.18.0...0.19.0) (2019-10-16)
 
 
