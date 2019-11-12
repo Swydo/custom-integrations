@@ -25,7 +25,7 @@ type Scope {
 type DateRange {
     enabled: Boolean
     required: Boolean
-    maxLength: Int
+    maxLength: Float
     min: String
     max: String
     strategy: String
