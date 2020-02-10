@@ -76,7 +76,7 @@
     "nyc": "14.1.1",
     "request": "2.88.0",
     "request-promise-native": "1.0.8",
-    "sinon": "7.5.0",
+    "sinon": "8.1.1",
     "sinon-chai": "3.4.0",
     "standard-version": "7.1.0"
   }
