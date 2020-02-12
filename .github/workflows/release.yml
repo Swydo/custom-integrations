@@ -1,0 +1,40 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master*
+    tags-ignore:
+      - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Configure git
+        run: |
+          git config --global user.name SwyBot
+          git config --global user.email SwyBot@users.noreply.github.com
+      - name: Build
+        run: |
+          npm ci
+      - name: Create release
+        run: |
+          npm run release
+          git push --follow-tags origin master
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if npm run can-npm-publish -s; then
+            npm publish
+          else
+            true
+          fi
