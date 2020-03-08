@@ -47,7 +47,7 @@
     "express": "4.17.1",
     "graphql": "0.13.2",
     "graphql-import": "0.7.1",
-    "graphql-tools": "4.0.3",
+    "graphql-tools": "4.0.7",
     "graphql-type-json": "0.2.1",
     "hwid": "0.1.1",
     "hygen": "5.0.3",
