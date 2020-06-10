@@ -48,7 +48,7 @@
     "graphql": "0.13.2",
     "graphql-import": "1.0.2",
     "graphql-tools": "5.0.0",
-    "graphql-type-json": "0.3.1",
+    "graphql-type-json": "0.3.2",
     "hwid": "0.1.1",
     "hygen": "5.0.3",
     "localtunnel": "2.0.0",
