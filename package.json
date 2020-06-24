@@ -59,7 +59,7 @@
     "stacktracey": "1.2.127",
     "strip-ansi": "6.0.0",
     "supports-color": "7.1.0",
-    "winston": "3.3.2",
+    "winston": "3.3.3",
     "yargs": "15.3.1"
   },
   "devDependencies": {
