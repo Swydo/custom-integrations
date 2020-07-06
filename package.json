@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/Swydo/custom-integrations#readme",
   "dependencies": {
-    "@swydo/byol": "1.14.4",
+    "@swydo/byol": "1.14.7",
     "ajv": "6.12.3",
     "apollo-server-core": "2.0.6",
     "better-ajv-errors": "0.6.7",
