@@ -70,7 +70,7 @@
     "eslint": "7.4.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-mocha-no-only": "1.1.0",
+    "eslint-plugin-mocha-no-only": "1.1.1",
     "mocha": "8.0.1",
     "nock": "13.0.2",
     "nyc": "15.1.0",
