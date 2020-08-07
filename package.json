@@ -39,7 +39,7 @@
     "apollo-server-core": "2.0.6",
     "better-ajv-errors": "0.6.7",
     "chalk": "4.1.0",
-    "chokidar": "3.4.1",
+    "chokidar": "3.4.2",
     "debounce": "1.2.0",
     "debug": "4.1.1",
     "enquirer": "2.3.6",
