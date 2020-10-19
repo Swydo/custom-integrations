@@ -47,7 +47,7 @@ to get accustomed to the terminology and workflow.
 
 ## Quick start
 
-The supported Node.js version is `10.x`.
+The supported Node.js version is `12.x` LTS.
 
 ### Install
 
