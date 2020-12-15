@@ -58,7 +58,7 @@
     "semver-diff": "3.1.1",
     "stacktracey": "1.2.127",
     "strip-ansi": "6.0.0",
-    "supports-color": "8.0.0",
+    "supports-color": "8.1.0",
     "winston": "3.3.3",
     "yargs": "16.2.0"
   },
