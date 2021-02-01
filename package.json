@@ -67,7 +67,7 @@
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "doctoc": "2.0.0",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-mocha-no-only": "1.1.1",
