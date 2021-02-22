@@ -1,21 +1,24 @@
 const express = require('express');
 const byol = require('@swydo/byol'); // The function invokeHandler is not destructured to allow stubbing.
-const StackTracey = require('stacktracey');
+const { CustomIntegrationsStackTracey } = require('../../lib/CustomIntegrationsStackTracey');
 const { getMainPath } = require('../../lib/getMainPath');
 const logger = require('../../lib/logger')('cli:start');
-
-StackTracey.isThirdParty.include(path => path.includes('/custom-integrations/'));
 
 let server;
 
 function logGraphqlErrors(errors) {
     errors.forEach((error) => {
-        const stack = new StackTracey(error.extensions.exception.stacktrace.join('\n'));
+        const stack = new CustomIntegrationsStackTracey(error.extensions.exception.stacktrace.join('\n'));
 
         logger.error('');
 
         logger.error(`  ${error.message}`);
-        stack.clean.pretty.split('\n').forEach(line => logger.error(`  ${line}`));
+        stack
+            .clean()
+            .withSources()
+            .asTable()
+            .split('\n')
+            .forEach(line => logger.error(`  ${line}`));
 
         logger.error('');
     });
