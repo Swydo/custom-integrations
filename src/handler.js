@@ -1,11 +1,9 @@
-const path = require('path');
 const debug = require('debug')('custom-integrations:handler');
-const { importSchema } = require('graphql-import');
 const { makeExecutableSchema } = require('graphql-tools');
-const { runQuery } = require('apollo-server-core');
+const { runHttpQuery } = require('apollo-server-core');
 const { resolvers } = require('./resolvers');
+const { typeDefs } = require('./typeDefs');
 
-const typeDefs = importSchema(path.join(__dirname, './schema.graphql'));
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 function getAsyncHandler(config) {
@@ -14,24 +12,36 @@ function getAsyncHandler(config) {
         context.callbackWaitsForEmptyEventLoop = false; // eslint-disable-line no-param-reassign
 
         try {
-            const result = await runQuery({
-                schema,
-                variables,
-                rootValue: config,
-                queryString: query,
+            const { graphqlResponse } = await runHttpQuery([], {
+                method: 'POST',
+                query: {
+                    query,
+                    variables,
+                },
+                options: {
+                    schema,
+                    rootValue: config,
+                },
             });
 
-            if (result.errors) {
+            const graphqlResponseObject = JSON.parse(graphqlResponse);
+
+            if (graphqlResponseObject.errors) {
                 // eslint-disable-next-line no-console
-                debug(result.errors);
+                debug(graphqlResponseObject.errors);
             }
 
-            return result;
+            return graphqlResponseObject;
         } catch (error) {
-            // eslint-disable-next-line no-console
             debug(error);
 
-            throw error;
+            try {
+                // GraphQL will return JSON-formatted error messages that are expected to be returned as normal
+                // response payload.
+                return JSON.parse(error.message);
+            } catch (e) {
+                throw error;
+            }
         }
     };
 }

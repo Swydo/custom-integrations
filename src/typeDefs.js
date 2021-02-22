@@ -1,0 +1,257 @@
+const gql = require('graphql-tag');
+
+const typeDefs = gql`
+    scalar JSON
+
+    type RateLimit {
+        resetInterval: Int!
+        requests: Int!
+        per: [String!]
+    }
+
+    type ScopeOptionsRequest {
+        endpointId: String
+        valueField: String
+        nameField: String
+        metaFields: [String]
+    }
+
+    type ScopePart {
+        key: String
+        optionsRequest: ScopeOptionsRequest
+    }
+
+    type Scope {
+        parts: [ScopePart]
+    }
+
+    type DateRange {
+        enabled: Boolean
+        required: Boolean
+        maxLength: Float
+        min: String
+        max: String
+        strategy: String
+    }
+
+    type Credentials {
+        required: Boolean
+    }
+
+    type Metrics {
+        min: Int
+        max: Int
+    }
+
+    type Dimensions {
+        min: Int
+        max: Int
+    }
+
+    type Cache {
+        enabled: Boolean
+        expireAfterSeconds: Int
+    }
+
+    type Display {
+        type: String!
+        format: String
+        input: String
+        path: String
+    }
+
+    type ListDisplay {
+        type: String!
+        separator: String
+    }
+
+    type RequestMap {
+        id: String
+        name: String
+    }
+
+    type RequestFilters {
+        id: String
+    }
+
+    type Sort {
+        path: String
+    }
+
+    type FilterOperatorsCapabilities {
+        caseSensitive: Boolean!
+        caseInsensitive: Boolean!
+        negate: Boolean!
+    }
+
+    type FilterOperator {
+        type: String
+        capabilities: FilterOperatorsCapabilities
+    }
+
+    type FilterOptionsRequest {
+        endpointId: String
+        idField: String
+        nameField: String
+    }
+
+    type FilterOption {
+        id: String
+        name: String
+    }
+
+    type Filter {
+        min: Int
+        max: Int
+        operators: [FilterOperator]
+        optionsRequest: FilterOptionsRequest
+        options: [FilterOption]
+        requestKey: String
+    }
+
+    type DateTime {
+        type: String!
+    }
+
+    type SubField {
+        id: ID!
+        name: String!
+        type: String!
+        category: String
+        isSelectable: Boolean
+        isDeprecated: Boolean
+        isConstant: Boolean
+        isDimension: Boolean
+        isMetric: Boolean
+        isRetrievable: Boolean
+        isSortable: Boolean
+        isNegative: Boolean
+        dateTime: DateTime
+        display: Display
+        shortDisplay: Display
+        listDisplay: ListDisplay
+        default: JSON
+        aggregate: String
+        requestKey: String
+        responseKey: String
+        formula: String
+        sort: Sort
+        filter: Filter
+    }
+
+    type Field {
+        id: ID!
+        name: String!
+        type: String!
+        category: String
+        isSelectable: Boolean
+        isDeprecated: Boolean
+        isConstant: Boolean
+        isDimension: Boolean
+        isMetric: Boolean
+        isRetrievable: Boolean
+        isSortable: Boolean
+        isNegative: Boolean
+        dateTime: DateTime
+        display: Display
+        shortDisplay: Display
+        listDisplay: ListDisplay
+        default: JSON
+        aggregate: String
+        requestKey: String
+        responseKey: String
+        formula: String
+        sort: Sort
+        filter: Filter
+        compatibleWith: [String]
+        incompatibleWith: [String]
+        subFields: [SubField]
+    }
+
+    type ScopeOption {
+        enabled: Boolean
+        required: Boolean
+        requiredPartKeys: [String]
+    }
+
+    type Pagination {
+        enabled: Boolean
+        perPage: Int
+    }
+
+    input DateRangeInput {
+        start: String
+        end: String
+    }
+
+    input FilterInput {
+        key: String
+        expressions: [String]
+        operator: String
+        caseSensitive: Boolean
+        negate: Boolean
+    }
+
+    input DataInput {
+        page: Int
+        perPage: Int
+        nextPage: JSON
+        offset: Int
+        metrics: [String]
+        dimensions: [String]
+        filters: [FilterInput]
+        projection: [String]
+        dateRange: DateRangeInput
+        limits: [Int]
+        credentials: JSON
+        scope: JSON
+        sort: JSON
+    }
+
+    type DataResponse {
+        rows: [JSON]
+        totals: JSON
+        totalPages: Int
+        resultCount: Int
+        nextPage: String
+    }
+
+    type Endpoint {
+        id: ID!
+        name: String!
+        isSelectable: Boolean
+        dateRange: DateRange
+        credentials: Credentials
+        metrics: Metrics
+        dimensions: Dimensions
+        cache: Cache
+        category: String
+        scope: ScopeOption
+        pagination: Pagination
+        fields: [Field]
+        data(request: DataInput!): DataResponse
+    }
+
+    type Adapter {
+        id: ID!
+        authentication: JSON
+        scope: Scope
+        rateLimits: [RateLimit]
+        endpoints: [Endpoint]
+        endpoint(id: ID!): Endpoint
+    }
+
+    type Config {
+        isValid: Boolean!
+    }
+
+    type Query {
+        adapter: Adapter
+        version: String!
+        config: Config
+    }
+`;
+
+module.exports = {
+    typeDefs,
+};

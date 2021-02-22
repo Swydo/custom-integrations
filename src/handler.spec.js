@@ -58,6 +58,30 @@ describe('handler', function () {
             expect(result).to.have.nested.property('data.adapter.id');
             expect(result.data.adapter.id).to.equal(config.adapter.id);
         });
+
+        it('returns the result of a partially successful graphql query', async function () {
+            const config = {
+                adapter: {
+                    id: 'foo',
+                    endpoints: [{
+                        id: 'bar',
+                        name: 'Bar',
+                        fields: [],
+                        // Connector is missing, expect INVALID_CONFIG.
+                    }],
+                },
+            };
+            const handler = getAsyncHandler(config);
+            const event = {
+                query: '{ adapter { id endpoint(id: "bar") { id }}}',
+            };
+            const result = await handler(event);
+
+            expect(result).to.be.an('object');
+            expect(result).to.have.nested.property('data');
+            expect(result).to.have.nested.property('data.adapter', null);
+            expect(result).to.have.nested.property('errors');
+        });
     });
 
     describe('#getHandler', function () {
