@@ -28,8 +28,8 @@ Build a Hello World integration from scratch
 We recommend having some programming experience. Assuming you have the basics covered you could come a long way by
 looking at the examples we've made and generally just messing about.
 
-Besides that you'll need a supported version of Node.js installed. Many of us use `nvm` to install node, but you can
-also just grab an installer from the [Node.js website](https://nodejs.org/en/download/).
+Besides that you'll need a supported version of Node.js installed, currently that's Node.js 12. Many of us use `nvm` to install node, but you can
+also just grab an installer from the [Node.js website](https://nodejs.org/dist/latest-v12.x/).
 
 ### Initialize the project
 
