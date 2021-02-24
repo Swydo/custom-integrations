@@ -56,7 +56,7 @@
     "npm-registry-fetch": "9.0.0",
     "prando": "5.1.2",
     "semver-diff": "3.1.1",
-    "stacktracey": "2.0.16",
+    "stacktracey": "2.0.18",
     "strip-ansi": "6.0.0",
     "supports-color": "8.1.1",
     "winston": "3.3.3",
