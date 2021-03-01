@@ -72,7 +72,7 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-mocha-no-only": "1.1.1",
     "mocha": "8.3.0",
-    "nock": "13.0.8",
+    "nock": "13.0.9",
     "nyc": "15.1.0",
     "request": "2.88.2",
     "request-promise-native": "1.0.9",
